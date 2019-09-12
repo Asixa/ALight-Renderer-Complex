@@ -75,7 +75,7 @@ void GLRenderer::init_texture()
 	// shaders[0].setInt("texture2", 1);
 }
 
-void GLRenderer::setup_data()
+void GLRenderer::init_data()
 {
 	float vertices[] = {
 		// positions         // colors

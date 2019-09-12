@@ -2,12 +2,12 @@
 // #include "GLRenderer.h"
 
 #include "Window.h"
+#include "GLRenderer.h"
 
 int main()
 {
-	// GLRenderer renderer("CSE410");
-	// renderer.run();
 	Window w("CSE410 intro to CG",1280,720);
+	w.renderer = new GLRenderer();
 	w.run();
 	return 0;
 }

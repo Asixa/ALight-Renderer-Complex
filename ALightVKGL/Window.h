@@ -28,11 +28,13 @@
 #pragma comment(lib, "legacy_stdio_definitions")
 #endif
 
+#include "Renderer.h"
 
 class Window
 {
 public:
 	GLFWwindow* window;
+	Renderer* renderer;
 	Window(const char* title,int w,int h):title(title),height(h),width(w){}
 	void style();
 	void run()
@@ -41,6 +43,9 @@ public:
 		create_window();
 		initialize_open_gl_loader();
 		init_im_gui();
+		renderer->init_shader();
+		renderer->init_texture();
+		renderer->init_data();
 		main_loop();
 		terminate();
 	}

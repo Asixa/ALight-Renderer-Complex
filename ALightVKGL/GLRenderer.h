@@ -4,18 +4,18 @@
 #include "shader.h"
 #include <vector>
 #include "imgui/imgui.h"
-
-class GLRenderer {
+#include "Renderer.h"
+class GLRenderer:public Renderer {
 public:
 	GLRenderer(){}
-	void run();
+
+	void init_shader() override;
+	void init_texture() override;
+	void init_data() override;
+	void render_loop() override;
+	void terminate() override;
 private:
 	std::vector<Shader>shaders;
 	unsigned int VBO, VAO;
-	void init_shader();
-	void init_texture();
-	void setup_data();
-	void render_loop();
-	void terminate();
 };
 

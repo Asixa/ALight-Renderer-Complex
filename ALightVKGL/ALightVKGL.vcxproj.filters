@@ -29,8 +29,11 @@
     <ClCompile Include="glad.c">
       <Filter>Externs</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="Renderer.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Core\Application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +54,9 @@
     </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{cde5df9d-6d85-4873-9232-7a7b93df4d58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Application">
+      <UniqueIdentifier>{fea3cd83-2bd7-4624-b2f1-dc02fb027477}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,8 +96,11 @@
     <ClInclude Include="imgui\imgui_impl_opengl3.h">
       <Filter>Externs\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="Renderer.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Core\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
