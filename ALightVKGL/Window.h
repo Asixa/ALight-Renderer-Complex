@@ -29,23 +29,28 @@
 #endif
 
 #include "Renderer.h"
-
+#include "UILayout.h"
 class Window
 {
 public:
 	GLFWwindow* window;
 	Renderer* renderer;
+	UILayout* UIlayout;
+
+	
 	Window(const char* title,int w,int h):title(title),height(h),width(w){}
-	void style();
+	void custom_style();
 	void run()
 	{
 		init_window();
 		create_window();
 		initialize_open_gl_loader();
 		init_im_gui();
+		UIlayout->Init();
 		renderer->init_shader();
-		renderer->init_texture();
 		renderer->init_data();
+		renderer->init_texture();
+
 		main_loop();
 		terminate();
 	}
@@ -53,9 +58,8 @@ private:
 	int width, height;
 	const char* glsl_version;
 	const char* title;
-	bool show_demo_window = true;
-	bool show_another_window = false;
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+	
 	
 	int init_window();
 	int create_window();
@@ -64,7 +68,6 @@ private:
 	void imgui_loop();
 	void main_loop();
 	void terminate();
-
 	void process_input(GLFWwindow* window);
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 };
