@@ -56,6 +56,27 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Output.cpp">
+      <Filter>Core\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImCurveEdit.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImGradient.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImGuizmo.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImSequencer.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Core\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Core\Engine\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Externs">
@@ -93,6 +114,9 @@
     </Filter>
     <Filter Include="Core\UI\Base">
       <UniqueIdentifier>{866ad8db-f371-42b8-bf24-2351eb76a779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externs\Gizmo">
+      <UniqueIdentifier>{a884a6e2-7c38-4693-9d54-b5f429421c42}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +215,21 @@
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Core\Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Core\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImCurveEdit.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImGradient.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImGuizmo.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImSequencer.h">
+      <Filter>Externs\Gizmo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,5 +9,5 @@ public:
 	virtual void render_loop() {};
 	virtual void terminate() {};
 	virtual unsigned int frame_buffer() { return 0; };
-	virtual void on_change_size(int w, int h){};
+	virtual void resize(int w, int h) {};
 };

@@ -4,6 +4,7 @@
 class Viewport final :public Panel
 {
 public:
+	bool overlay=false;
 	Viewport(Renderer* r):renderer(r){}
 	Renderer* renderer;
 	void Render() override;

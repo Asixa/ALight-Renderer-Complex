@@ -30,6 +30,8 @@
 
 #include "Renderer.h"
 #include "UILayout.h"
+#include "Engine.h"
+
 class Window
 {
 public:
@@ -51,6 +53,7 @@ public:
 		renderer->init_data();
 		renderer->init_texture();
 
+		Engine::GetInstance().Start();
 		main_loop();
 		terminate();
 	}

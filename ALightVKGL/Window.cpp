@@ -168,7 +168,9 @@ void Window::init_im_gui()
 		style.WindowRounding = 0.0f;
 		style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 	}
+
 	
+	//io.Fonts->AddFontFromFileTTF("DejaVuSans.ttf", 14.0f, NULL);
 	// Setup Platform/Renderer bindings
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
@@ -201,6 +203,8 @@ void Window::main_loop()
 		// - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
 		// Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
 		glfwPollEvents();
+		Engine::GetInstance().Update();
+		
 		imgui_loop();
 
 		// int display_w, display_h;
@@ -217,7 +221,7 @@ void Window::main_loop()
 		{
 			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
-			ImGui::RenderPlatformWindowsDefault();
+			ImGui::RenderPlatformWindowsDefault(); glEnable(GL_DEPTH_TEST);
 			glfwMakeContextCurrent(backup_current_context);
 		}
 

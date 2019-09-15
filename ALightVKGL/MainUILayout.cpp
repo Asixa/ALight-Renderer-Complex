@@ -4,6 +4,7 @@
 #include "Project.h"
 #include "Property.h"
 #include "Hierarchy.h"
+#include "Output.h"
 
 void MainUILayout::Init()
 {
@@ -11,6 +12,7 @@ void MainUILayout::Init()
 	panels.push_back(new Project());
 	panels.push_back(new Property());
 	panels.push_back(new Hierarchy());
+	panels.push_back(new Output());
 }
 
 void MainUILayout::Render()

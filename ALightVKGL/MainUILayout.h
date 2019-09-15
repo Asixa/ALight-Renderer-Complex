@@ -11,7 +11,7 @@ public:
 	MainUILayout(Renderer* r):renderer(r){}
 	unsigned int texture;
 	Renderer* renderer;
-	bool show_demo_window = false;
+	bool show_demo_window = true;
 	bool show_another_window = true;
 	bool show_docking=true;
 	void Init() override;

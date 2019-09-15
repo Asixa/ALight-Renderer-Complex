@@ -134,7 +134,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Gizmo\ImCurveEdit.cpp" />
+    <ClCompile Include="Gizmo\ImGradient.cpp" />
+    <ClCompile Include="Gizmo\ImGuizmo.cpp" />
+    <ClCompile Include="Gizmo\ImSequencer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLRenderer.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
@@ -146,6 +151,8 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainUILayout.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Output.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -159,6 +166,10 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="filesystem.h" />
+    <ClInclude Include="Gizmo\ImCurveEdit.h" />
+    <ClInclude Include="Gizmo\ImGradient.h" />
+    <ClInclude Include="Gizmo\ImGuizmo.h" />
+    <ClInclude Include="Gizmo\ImSequencer.h" />
     <ClInclude Include="GLRenderer.h" />
     <ClInclude Include="Hierarchy.h" />
     <ClInclude Include="imgui\imconfig.h" />
@@ -174,6 +185,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshPainter.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Output.h" />
     <ClInclude Include="Painter.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="Project.h" />
