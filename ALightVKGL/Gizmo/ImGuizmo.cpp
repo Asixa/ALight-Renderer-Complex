@@ -735,13 +735,30 @@ namespace ImGuizmo
       gContext.mDrawList = ImGui::GetWindowDrawList();
    }
 
-   void BeginFrame()
+   void BeginFrame(ImVec2 size, ImVec2 pos)
    {
-      ImGuiIO& io = ImGui::GetIO();
+	   gContext.mDrawList = ImGui::GetWindowDrawList();
+		return;
+	   int corner = 0;
+	   ImGuiIO& io = ImGui::GetIO();
+	   ImVec2 window_pos_pivot = ImVec2((corner & 1) ? 1.0f : 0.0f, (corner & 2) ? 1.0f : 0.0f);
+	   ImGui::SetNextWindowPos(pos, ImGuiCond_Always, window_pos_pivot);
+	   ImGui::SetNextWindowBgAlpha(0.2f);
+	   ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoScrollbar;
+	   ImGui::BeginChild("Child2",size, true, window_flags);
+	   gContext.mDrawList = ImGui::GetWindowDrawList();
+
+	   ImGui::Text("Statistics\n");
+	   ImGui::Separator();
+
+	   ImGui::EndChild();
+   	return;
+   	
 
       const ImU32 flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoBringToFrontOnFocus;
-      ImGui::SetNextWindowSize(io.DisplaySize);
-      ImGui::SetNextWindowPos(ImVec2(0, 0));
+      ImGui::SetNextWindowSize(size);
+	  ImGui::SetNextWindowPos(pos, ImGuiCond_Always, ImVec2(0,0));
+      //ImGui::SetNextWindowPos(ImVec2(0, 0));
       
       ImGui::PushStyleColor(ImGuiCol_WindowBg, 0);
       ImGui::PushStyleColor(ImGuiCol_Border, 0);
@@ -750,6 +767,7 @@ namespace ImGuizmo
       ImGui::Begin("gizmo", NULL, flags);
       gContext.mDrawList = ImGui::GetWindowDrawList();
       ImGui::End();
+   	
       ImGui::PopStyleVar();
       ImGui::PopStyleColor(2);
    }
@@ -1919,7 +1937,7 @@ namespace ImGuizmo
           }
       }
    }
-
+   
    void DrawCube(const float *view, const float *projection, const float *matrix)
    {
       matrix_t viewInverse;
@@ -1976,12 +1994,19 @@ namespace ImGuizmo
    void DrawGrid(const float *view, const float *projection, const float *matrix, const float gridSize)
    {
       matrix_t res = *(matrix_t*)matrix * *(matrix_t*)view * *(matrix_t*)projection;
-
       for (float f = -gridSize; f <= gridSize; f += 1.f)
       {
          gContext.mDrawList->AddLine(worldToPos(makeVect(f, 0.f, -gridSize), res), worldToPos(makeVect(f, 0.f, gridSize), res), 0xFF808080);
          gContext.mDrawList->AddLine(worldToPos(makeVect(-gridSize, 0.f, f), res), worldToPos(makeVect(gridSize, 0.f, f), res), 0xFF808080);
       }
+   }
+
+   void DrawImage(ImTextureID t, ImVec2 a, ImVec2 b, ImVec2 c, ImVec2 d)
+   {
+	   
+	   gContext.mDrawList->AddImage(
+			   reinterpret_cast<void*>(t), a,b,c, d);
+	   
    }
 };
 

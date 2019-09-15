@@ -6,5 +6,7 @@ class Transform:public Component
 {
 public:
 	glm::vec3 position;
-	// glm::qua<float,>rotation;
+	glm::vec3 rotation; 
+	glm::vec3 scale;
 };
+

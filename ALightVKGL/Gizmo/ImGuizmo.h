@@ -116,7 +116,7 @@ namespace ImGuizmo
 	IMGUI_API void SetDrawlist();
 
 	// call BeginFrame right after ImGui_XXXX_NewFrame();
-	IMGUI_API void BeginFrame();
+	IMGUI_API void BeginFrame(ImVec2 size, ImVec2 pos);
 
 	// return true if mouse cursor is over any gizmo control (axis, plan or screen component)
 	IMGUI_API bool IsOver();
@@ -150,7 +150,7 @@ namespace ImGuizmo
 	// Render a cube with face color corresponding to face normal. Usefull for debug/tests
 	IMGUI_API void DrawCube(const float *view, const float *projection, const float *matrix);
 	IMGUI_API void DrawGrid(const float *view, const float *projection, const float *matrix, const float gridSize);
-
+	IMGUI_API void DrawImage(ImTextureID t, ImVec2 a, ImVec2 b, ImVec2 c, ImVec2 d);
 	// call it when you want a gizmo
 	// Needs view and projection matrices. 
 	// matrix parameter is the source matrix (where will be gizmo be drawn) and might be transformed by the function. Return deltaMatrix is optional
