@@ -112,6 +112,7 @@ void EditTransform(const Camera& camera, matrix_t& matrix)
 
 namespace ImGuizmo
 {
+	IMGUI_API void SetLineSize(float length, float thick);
 	// call inside your own window and before Manipulate() in order to draw gizmo to that window.
 	IMGUI_API void SetDrawlist();
 

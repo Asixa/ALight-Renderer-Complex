@@ -14,12 +14,24 @@ void MainUILayout::Init()
 	panels.push_back(new Hierarchy());
 	panels.push_back(new Output());
 }
-
+void ToolBar()
+{
+	ImGuiWindowFlags window_flags =
+		ImGuiWindowFlags_NoScrollWithMouse
+		| ImGuiWindowFlags_NoTitleBar
+		| ImGuiWindowFlags_NoScrollbar;;
+	ImGui::Begin("233", nullptr,window_flags);
+	ImGui::Button("2333");
+	ImGui::End();
+}
 void MainUILayout::Render()
 {
-
+	//ToolBar();
+	
 	MenuBar();
+	
 	DockingSpace(&show_docking);
+	
 	if (show_demo_window)ImGui::ShowDemoWindow(&show_demo_window);
 	for (auto element : panels)element->Render();
 }
@@ -44,6 +56,12 @@ void MainUILayout::MenuBar() const
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 			ImGui::EndMenu();
 		}
+
+		if(ImGui::Button("a",ImVec2(20,20)))
+		{
+			
+		}
+		
 		ImGui::EndMainMenuBar();
 	}
 

@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Camera.h"
+#include "CameraMove.h"
 
 Engine::Engine()
 {
@@ -14,6 +15,10 @@ void Engine::Start()
 	scene->AddObject(camera_object);
 	camera_object->name = "MainCamera";
 	camera_object->transform->position = glm::vec3(0, 0, -3);
+
+	auto cm = new CameraMove();
+	camera_object->AddComponent(cm);
+	cm->Init(glm::vec3(0.0f, 0.0f, 3.0f));
 }
 
 void Engine::Update()

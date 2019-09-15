@@ -72,98 +72,8 @@ void GLRenderer::init_data()
 
 	InitFrameBuffer(800, 600);
 }
-void EditTransform(const float* cameraView, float* cameraProjection, float* matrix,ImVec2 size,unsigned f)
-{
-	static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
-	static ImGuizmo::MODE mCurrentGizmoMode(ImGuizmo::LOCAL);
-	static bool useSnap = false;
-	static float snap[3] = { 1.f, 1.f, 1.f };
-	static float bounds[] = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
-	static float boundsSnap[] = { 0.1f, 0.1f, 0.1f };
-	static bool boundSizing = false;
-	static bool boundSizingSnap = false;
-
-	if (ImGui::IsKeyPressed(90))
-		mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
-	if (ImGui::IsKeyPressed(69))
-		mCurrentGizmoOperation = ImGuizmo::ROTATE;
-	if (ImGui::IsKeyPressed(82)) // r Key
-		mCurrentGizmoOperation = ImGuizmo::SCALE;
-	// if (ImGui::RadioButton("Translate", mCurrentGizmoOperation == ImGuizmo::TRANSLATE))
-	// 	mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
-	// ImGui::SameLine();
-	// if (ImGui::RadioButton("Rotate", mCurrentGizmoOperation == ImGuizmo::ROTATE))
-	// 	mCurrentGizmoOperation = ImGuizmo::ROTATE;
-	// ImGui::SameLine();
-	// if (ImGui::RadioButton("Scale", mCurrentGizmoOperation == ImGuizmo::SCALE))
-	// 	mCurrentGizmoOperation = ImGuizmo::SCALE;
-	float matrixTranslation[3], matrixRotation[3], matrixScale[3];
-	ImGuizmo::DecomposeMatrixToComponents(matrix, matrixTranslation, matrixRotation, matrixScale);
-
-	
-	int corner = 0;
-	ImGuiIO& io = ImGui::GetIO();
-	ImVec2 window_pos_pivot = ImVec2((corner & 1) ? 1.0f : 0.0f, (corner & 2) ? 1.0f : 0.0f);
-	ImGui::SetNextWindowBgAlpha(0.0f);
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoScrollbar;
-	ImGui::BeginChild("Child2", size, true, window_flags);
 
 
-	
-	
-	// ImGui::InputFloat3("Tr", matrixTranslation, 3);
-	// ImGui::InputFloat3("Rt", matrixRotation, 3);
-	// ImGui::InputFloat3("Sc", matrixScale, 3);
-	ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, matrix);
-
-	// if (mCurrentGizmoOperation != ImGuizmo::SCALE)
-	// {
-	// 	if (ImGui::RadioButton("Local", mCurrentGizmoMode == ImGuizmo::LOCAL))
-	// 		mCurrentGizmoMode = ImGuizmo::LOCAL;
-	// 	ImGui::SameLine();
-	// 	if (ImGui::RadioButton("World", mCurrentGizmoMode == ImGuizmo::WORLD))
-	// 		mCurrentGizmoMode = ImGuizmo::WORLD;
-	// }
-	// if (ImGui::IsKeyPressed(83))
-	// 	useSnap = !useSnap;
-	// ImGui::Checkbox("", &useSnap);
-	// ImGui::SameLine();
-	//
-	// switch (mCurrentGizmoOperation)
-	// {
-	// case ImGuizmo::TRANSLATE:
-	// 	ImGui::InputFloat3("Snap", &snap[0]);
-	// 	break;
-	// case ImGuizmo::ROTATE:
-	// 	ImGui::InputFloat("Angle Snap", &snap[0]);
-	// 	break;
-	// case ImGuizmo::SCALE:
-	// 	ImGui::InputFloat("Scale Snap", &snap[0]);
-	// 	break;
-	// }
-	// ImGui::Checkbox("Bound Sizing", &boundSizing);
-	// if (boundSizing)
-	// {
-	// 	ImGui::PushID(3);
-	// 	ImGui::Checkbox("", &boundSizingSnap);
-	// 	ImGui::SameLine();
-	// 	ImGui::InputFloat3("Snap", boundsSnap);
-	// 	ImGui::PopID();
-	// }
-
-
-	auto a = ImGui::GetWindowPos();
-	
-	ImGuizmo::SetRect(a.x, a.y, size.x, size.y);
-
-	ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
-	ImGui::EndChild();
-}
-float objectMatrix[16] =
-{ 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  0.f, 0.f, 0.f, 1.f };
 void GLRenderer::render_loop()
 {
 
@@ -173,28 +83,22 @@ void GLRenderer::render_loop()
 	glClearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//ImGuizmo::DrawCube(glm::value_ptr(Camera::main->view), glm::value_ptr(Camera::main->projection), objectMatrix);
+
 	//DrawScene
 	shaders[0].use();
 	glBindVertexArray(VAO);
-
-
-	// pass transformation matrices to the shader
-
 
 	shaders[0].setMat4("projection", Camera::main->projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
 	shaders[0].setMat4("view", Camera::main->view);
 
 
-
-
-	EditTransform(glm::value_ptr(Camera::main->view), glm::value_ptr(Camera::main->projection), objectMatrix,ImVec2(width,height),frame_buffer());
+	
 	// render boxes
 	glBindVertexArray(VAO);
 	
 	{
 		// calculate the model matrix for each object and pass it to shader before drawing
-		glm::mat4 model = glm::make_mat4(objectMatrix);
+		glm::mat4 model = glm::make_mat4(Engine::GetInstance().scene->objectMatrix);
 		//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
 		//model = glm::translate(model, Engine::GetInstance().scene->cubePositions[0]);
 		//float angle = 20.0f;

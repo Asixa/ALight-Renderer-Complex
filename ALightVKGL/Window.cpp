@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <iostream>
 #include "Gizmo/ImGuizmo.h"
+#include "Input.h"
 
 
 void Window::custom_style()
@@ -125,8 +126,10 @@ int Window::create_window()
 	}
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Enable vsync
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
+	glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
+	glfwSetCursorPosCallback(window, MouseCallback);
+	glfwSetScrollCallback(window, ScrollCallback);
+	Input::GetInstance().window = window;
 }
 
 int Window::initialize_open_gl_loader()
@@ -198,18 +201,13 @@ void Window::main_loop()
 {
 	while (!glfwWindowShouldClose(window))
 	{
-		// Poll and handle events (inputs, window resize, etc.)
-		// You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
-		// - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
-		// - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
-		// Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
+
 		glfwPollEvents();
 		Engine::GetInstance().Update();
-		
+		Input::GetInstance().Clear();
+		ProcessInput(window);
 		imgui_loop();
 
-		// int display_w, display_h;
-		// glfwGetFramebufferSize(window, &display_w, &display_h);
 		glViewport(0, 0, 800, 600);
 		glClearColor(0.2f,0.2f,0.2f,1);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -241,14 +239,35 @@ void Window::terminate()
 	glfwTerminate();
 }
 
-void Window::process_input(GLFWwindow* window)
+void Window::ProcessInput(GLFWwindow* window)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+
+	// if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	// 	camera.ProcessKeyboard(FORWARD, deltaTime);
+	// if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	// 	camera.ProcessKeyboard(BACKWARD, deltaTime);
+	// if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	// 	camera.ProcessKeyboard(LEFT, deltaTime);
+	// if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	// 	camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
-void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
 	//glViewport(0, 0, width, height);
 }
 
+void Window::MouseCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	Input::GetInstance().UpdateMouse(xpos, ypos);
+}
+
+// glfw: whenever the mouse scroll wheel scrolls, this callback is called
+// ----------------------------------------------------------------------
+void Window::ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	Input::GetInstance().MouseScroll = yoffset;
+
+}

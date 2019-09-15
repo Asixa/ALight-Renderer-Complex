@@ -71,6 +71,8 @@ private:
 	void imgui_loop();
 	void main_loop();
 	void terminate();
-	void process_input(GLFWwindow* window);
-	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+	auto ProcessInput(GLFWwindow* window) -> void;
+	static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
+	static void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
+	static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
 };

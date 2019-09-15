@@ -57,7 +57,11 @@ public:
 		0, 1, 3, // first triangle
 		1, 2, 3  // second triangle
 	};
-
+	float objectMatrix[16] =
+	{ 1.f, 0.f, 0.f, 0.f,
+	  0.f, 1.f, 0.f, 0.f,
+	  0.f, 0.f, 1.f, 0.f,
+	  0.f, 0.f, 0.f, 1.f };
 	glm::vec3 cubePositions[1] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		// glm::vec3(2.0f,  5.0f, -15.0f),

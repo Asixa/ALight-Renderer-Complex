@@ -77,6 +77,12 @@
     <ClCompile Include="Object.cpp">
       <Filter>Core\Engine\Base</Filter>
     </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Core\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Core\Engine\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Externs">
@@ -230,6 +236,12 @@
     </ClInclude>
     <ClInclude Include="Gizmo\ImSequencer.h">
       <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraMove.h">
+      <Filter>Core\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Core\Engine\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
