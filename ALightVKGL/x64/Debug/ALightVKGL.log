@@ -1,2 +1,8 @@
-﻿  MainUILayout.cpp
+﻿  Viewport.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Viewport.cpp(16,40): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Viewport.cpp(16,37): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Viewport.cpp(156,31): warning C4244:  “参数”: 从“const float”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Viewport.cpp(156,23): warning C4244:  “参数”: 从“const float”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightVKGL\Viewport.cpp(160,70): warning C4312:  “reinterpret_cast”: 从“unsigned int”转换到更大的“void *”
   ALightVKGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\x64\Debug\ALightVKGL.exe

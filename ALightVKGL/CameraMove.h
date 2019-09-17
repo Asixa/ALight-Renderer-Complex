@@ -80,16 +80,26 @@ public:
 		// 	ProcessKeyboard(RIGHT, ImGui::GetIO().DeltaTime);
 
 
-		if (Input::GetInstance().KeyPress(GLFW_KEY_W))
-			ProcessKeyboard(FORWARD, ImGui::GetIO().DeltaTime);
-		if (Input::GetInstance().KeyPress(GLFW_KEY_S))
-			ProcessKeyboard(BACKWARD, ImGui::GetIO().DeltaTime);
-		if (Input::GetInstance().KeyPress(GLFW_KEY_A))
-			ProcessKeyboard(LEFT, ImGui::GetIO().DeltaTime);
-		if (Input::GetInstance().KeyPress(GLFW_KEY_D))
-			ProcessKeyboard(RIGHT, ImGui::GetIO().DeltaTime);
-		if(ImGui::IsMouseDown(GLFW_MOUSE_BUTTON_RIGHT))ProcessMouseMovement(Input::GetInstance().MouseXoffset, Input::GetInstance().MouseYoffset);
-		ProcessMouseScroll(Input::GetInstance().MouseScroll);
+
+		
+		if (ImGui::IsMouseDown(GLFW_MOUSE_BUTTON_RIGHT)) {
+			glfwSetInputMode(Input::GetInstance().window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			ProcessMouseMovement(Input::GetInstance().MouseXoffset, Input::GetInstance().MouseYoffset);
+
+			if (Input::GetInstance().KeyPress(GLFW_KEY_W))
+				ProcessKeyboard(FORWARD, ImGui::GetIO().DeltaTime);
+			if (Input::GetInstance().KeyPress(GLFW_KEY_S))
+				ProcessKeyboard(BACKWARD, ImGui::GetIO().DeltaTime);
+			if (Input::GetInstance().KeyPress(GLFW_KEY_A))
+				ProcessKeyboard(LEFT, ImGui::GetIO().DeltaTime);
+			if (Input::GetInstance().KeyPress(GLFW_KEY_D))
+				ProcessKeyboard(RIGHT, ImGui::GetIO().DeltaTime);
+		}
+		else
+		{
+			glfwSetInputMode(Input::GetInstance().window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+		//ProcessMouseScroll(Input::GetInstance().MouseScroll);
 		
 	}
 	// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
@@ -140,6 +150,7 @@ public:
 			Zoom = 1.0f;
 		if (Zoom >= 45.0f)
 			Zoom = 45.0f;
+		Camera::main->FOV = Zoom;
 	}
 
 };

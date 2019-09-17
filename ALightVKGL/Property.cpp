@@ -4,9 +4,9 @@
 
 void Property::Render()
 {
-	ImGui::Begin("Property", &enabled);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-	
-	ImGui::ColorEdit3("Background color", (float*) & (Engine::GetInstance().scene->bgColor)); // Edit 3 floats representing a color
+	ImGui::Begin("Inspector", &enabled);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
+	ImGui::ColorEdit3("",reinterpret_cast<float*>(&(Engine::GetInstance().scene->bgColor))); // Edit 3 floats representing a color
 	if (ImGui::CollapsingHeader("Help"))
 	{
 		ImGui::Text("PROGRAMMER GUIDE:");

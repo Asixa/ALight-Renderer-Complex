@@ -83,6 +83,9 @@
     <ClCompile Include="Input.cpp">
       <Filter>Core\Engine\Base</Filter>
     </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Core\Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Externs">
@@ -216,9 +219,6 @@
     <ClInclude Include="Material.h">
       <Filter>Core\Engine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Core\Engine\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Core\Engine\Rendering</Filter>
     </ClInclude>
@@ -243,12 +243,27 @@
     <ClInclude Include="Input.h">
       <Filter>Core\Engine\Base</Filter>
     </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Core\Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTexture.h">
+      <Filter>Core\Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Core\Engine\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\shader.fs">
       <Filter>Shaderfiles</Filter>
     </None>
     <None Include="shaders\shader.vs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+    <None Include="shaders\1.model_loading.fs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+    <None Include="shaders\1.model_loading.vs">
       <Filter>Shaderfiles</Filter>
     </None>
   </ItemGroup>

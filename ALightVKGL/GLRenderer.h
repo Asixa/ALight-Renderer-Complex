@@ -5,6 +5,7 @@
 #include <vector>
 #include "imgui/imgui.h"
 #include "Renderer.h"
+#include "MyTexture.h"
 class GLRenderer:public Renderer {
 public:
 	GLRenderer(){}
@@ -18,12 +19,13 @@ public:
 	void resize(int w,int h)override;
 private:
 	std::vector<Shader>shaders;
+	
 	unsigned int VBO, VAO,EBO;
 	unsigned int texture1, texture2;
 	unsigned int framebuffer;
 	unsigned int textureColorbuffer;
 	unsigned int rbo;
-
+	// ourModel = new Model("../Resources/Objects/nanosuit/nanosuit.obj");
 	int width = 800, height = 600;
 	void InitFrameBuffer(int w, int h);
 };

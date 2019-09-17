@@ -43,7 +43,24 @@ void FullOverLay(ImVec2 pos, ImVec2 size)
 
 	ImGui::EndChild();
 }
+void ToolBar2()
+{
+	static int item_current_2;
+	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 0);
+	ImGui::SetCursorPosY(25);
+	ImGui::SetNextItemWidth(80);
+	
+	ImGui::Combo("2", &item_current_2, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
 
+	ImGui::SetCursorPos(ImVec2(88, 25));
+	ImGui::Button("Clear");
+
+
+	
+
+
+	ImGui::PopStyleVar();
+}
 void EditTransform(const float* cameraView, float* cameraProjection, float* matrix, ImVec2 size)
 {
 	static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
@@ -52,7 +69,7 @@ void EditTransform(const float* cameraView, float* cameraProjection, float* matr
 	static float snap[3] = { 1.f, 1.f, 1.f };
 	static float bounds[] = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
 	static float boundsSnap[] = { 0.1f, 0.1f, 0.1f };
-	static bool boundSizing = true;
+	static bool boundSizing = false;
 	static bool boundSizingSnap = false;
 
 	if (ImGui::IsKeyPressed(90))
@@ -130,13 +147,14 @@ void EditTransform(const float* cameraView, float* cameraProjection, float* matr
 }
 void Viewport::Render()
 {
-	ImGui::Begin("Viewport");
-
+	ImGui::Begin("Scene");
+	
 	const auto pos = ImGui::GetWindowPos();
 	const auto size = ImGui::GetWindowSize();
 	//glViewport(a.x/2, a.y/2, a.x, a.y);
-
+	//ImGui::SetCursorPosY(0);
 	renderer->resize(size.x, size.y);
+	
 	ImGuizmo::BeginFrame(size, pos);
 	
 	ImGuizmo::DrawImage(reinterpret_cast<void*>(renderer->frame_buffer()), ImVec2(ImGui::GetCursorScreenPos()),
@@ -144,7 +162,7 @@ void Viewport::Render()
 		ImVec2(0, 1), ImVec2(1, 0));
 	EditTransform(glm::value_ptr(Camera::main->view), glm::value_ptr(Camera::main->projection), Engine::GetInstance().scene->objectMatrix, ImVec2(size.x, size.y));
 	renderer->render_loop();
-	
+	ToolBar2();
 	// ImGui::GetWindowDrawList()->AddImage(
 	// 	reinterpret_cast<void*>(renderer->frame_buffer()), ImVec2(ImGui::GetCursorScreenPos()),
 	// 	ImVec2(ImGui::GetCursorScreenPos().x + size.x-1, ImGui::GetCursorScreenPos().y + size.y-1),

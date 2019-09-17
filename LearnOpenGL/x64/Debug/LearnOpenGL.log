@@ -1,2 +1,14 @@
-﻿  main.cpp
-  LearnOpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\x64\Debug\LearnOpenGL.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (LearnOpenGL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  glad.c
+  main.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(93,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(167,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(168,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(172,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(173,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(175,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(176,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\LearnOpenGL\main.cpp(185,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  LearnOpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\x64\Debug\Lab.exe

@@ -11,7 +11,7 @@ public:
 	void Render() override;
 	Output();
 	void Clear();
-
+	static Output& GetInstance();
 	void AddLog(const char* fmt, ...); 
 };
 
