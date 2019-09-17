@@ -1,0 +1,37 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ALightVKGL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Application.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Style.h(70,27): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Style.h(79,25): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+  Camera.cpp
+  Engine.cpp
+  GLRenderer.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Application.cpp(178,37): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  Hierarchy.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  Input.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(13,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(14,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(18,22): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(19,22): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(20,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  Object.cpp
+  Property.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Input.cpp(21,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  Scene.cpp
+  Transform.cpp
+  Viewport.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Viewport.cpp(16,39): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Viewport.cpp(16,36): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Viewport.cpp(132,31): warning C4244:  “参数”: 从“const float”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Viewport.cpp(132,23): warning C4244:  “参数”: 从“const float”转换到“int”，可能丢失数据
+  main.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Viewport.cpp(134,69): warning C4312:  “reinterpret_cast”: 从“unsigned int”转换到更大的“void *”
+  正在生成代码...
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Application.cpp(40): warning C4715:  “ALightCreator::Application::InitWindow”: 不是所有的控件路径都返回值
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Application.cpp(74): warning C4715:  “ALightCreator::Application::InitializeOpenGlLoader”: 不是所有的控件路径都返回值
+F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\ALightCreator\Application.cpp(56): warning C4715:  “ALightCreator::Application::CreateWindow”: 不是所有的控件路径都返回值
+  ALightCreator.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightVKGL\x64\Debug\ALightCreator.exe

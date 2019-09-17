@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Hierarchy.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainUILayout.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Output.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Project.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Property.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewport.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Externs</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Externs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImCurveEdit.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImGradient.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImGuizmo.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo\ImSequencer.cpp">
+      <Filter>Externs\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="VKRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\Components\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Engine\Components\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Engine\Components\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Externs">
+      <UniqueIdentifier>{c8f0e311-10b3-4caf-8f19-3814e2d5e8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externs\imgui">
+      <UniqueIdentifier>{28604bc6-79c3-4fe6-97a1-e5a14c781bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externs\Gizmo">
+      <UniqueIdentifier>{60ba39c5-b9f2-4a3c-b4fa-dab2923dae60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderers">
+      <UniqueIdentifier>{a1a409f7-10e7-4030-8024-40288dee840d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaderfiles">
+      <UniqueIdentifier>{454e611f-d187-4dbc-be45-053e5cca3bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{92e28e03-02c7-418c-a799-38cb5f1edbd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Base">
+      <UniqueIdentifier>{d428eed8-f936-4e48-8978-46c7918cd4e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{f20e788c-d214-42d0-a3e9-1e3830622421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Components">
+      <UniqueIdentifier>{039806f2-1639-497d-8703-37d5d247e2ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Components\System">
+      <UniqueIdentifier>{90f54b5a-c194-4c90-b817-b560f1861316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Components\Script">
+      <UniqueIdentifier>{c2bf3dab-f5ba-44fd-833d-0ad7b8d6d22c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Base">
+      <UniqueIdentifier>{5c0e6522-da2c-4020-a961-61bc1bf9ad97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Rendering">
+      <UniqueIdentifier>{84254687-acd5-4d7c-81ac-962bb563370d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{7e5b52f0-a7fd-4bee-a501-118026d80e66}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Hierarchy.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MainUILayout.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Project.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewport.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="UILayout.h">
+      <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTexture.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="filesystem.h">
+      <Filter>Externs</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Externs</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_glfw.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Externs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImCurveEdit.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImGradient.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImGuizmo.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo\ImSequencer.h">
+      <Filter>Externs\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="GLRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Style.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\Components\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Engine\Components\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Engine\Components\System</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraMove.h">
+      <Filter>Engine\Components\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Engine\Base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\1.model_loading.fs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+    <None Include="shaders\1.model_loading.vs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+    <None Include="shaders\shader.fs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+    <None Include="shaders\shader.vs">
+      <Filter>Shaderfiles</Filter>
+    </None>
+  </ItemGroup>
+</Project>
