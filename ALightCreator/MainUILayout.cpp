@@ -14,7 +14,7 @@ MainUILayout::MainUILayout()
 
 void MainUILayout::Init()
 {
-	panels.push_back(new Viewport(new GLRenderer()));
+	panels.push_back(new Viewport(new ALight_OpenGL::GLRenderer()));
 	panels.push_back(new Project());
 	panels.push_back(new Property());
 	panels.push_back(new Hierarchy());

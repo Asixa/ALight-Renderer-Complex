@@ -1,5 +1,7 @@
 #pragma once
-class Material
-{
-	
-};
+namespace ALightCreator {
+	class Material
+	{
+
+	};
+}

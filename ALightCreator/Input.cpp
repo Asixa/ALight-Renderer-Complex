@@ -1,5 +1,5 @@
 #include "Input.h"
-
+using namespace  ALightCreator;
 void Input::Clear()
 {
 	MouseXoffset =0;

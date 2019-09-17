@@ -1,8 +1,8 @@
 #include "Transform.h"
 #include <glm/detail/func_geometric.inl>
 #include <glm/detail/func_trigonometric.inl>
-
-void Transform::Update()
+using namespace  ALightCreator;
+void ALightCreator::Transform::Update()
 {
 	// X:  Pitch
 	// Y : Yaw

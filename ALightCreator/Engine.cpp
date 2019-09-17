@@ -2,12 +2,12 @@
 #include "Camera.h"
 #include "CameraMove.h"
 
-Engine::Engine()
+ALightCreator::Engine::Engine()
 {
 	scene = new Scene();
 }
 
-void Engine::Start()
+void ALightCreator::Engine::Start()
 {
 	Camera::main = new Camera();
 	auto camera_object = new Object();
@@ -21,7 +21,7 @@ void Engine::Start()
 	cm->Init(glm::vec3(0.0f, 0.0f, 3.0f));
 }
 
-void Engine::Update()
+void ALightCreator::Engine::Update()
 {
 	for (auto obj : scene->objects)
 	{
@@ -29,4 +29,4 @@ void Engine::Update()
 	}
 }
 
-Engine& Engine::GetInstance(){static Engine instance;return instance;}
+ALightCreator::Engine& ALightCreator::Engine::GetInstance(){static Engine instance;return instance;}

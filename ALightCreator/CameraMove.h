@@ -10,7 +10,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Input.h"
-
+using namespace ALightCreator;
 // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
 enum Camera_Movement {
 	FORWARD,

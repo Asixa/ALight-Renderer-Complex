@@ -4,7 +4,6 @@
 #include "shader.h"
 
 
-#include "filesystem.h"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
@@ -16,7 +15,8 @@
 #include "Camera.h"
 #include "Gizmo/ImGuizmo.h"
 #include "Output.h"
-
+using namespace ALightCreator;
+using namespace ALight_OpenGL;
 Model* our_model;
 void GLRenderer::Init()
 {

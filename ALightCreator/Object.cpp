@@ -1,12 +1,13 @@
 #include "Object.h"
-Object::Object()
+using namespace  ALightCreator;
+ALightCreator::Object::Object()
 {
 
 	transform = new Transform();
 	AddComponent(transform);
 }
 
-Component* Object::AddComponent(Component* c)
+Component* ALightCreator::Object::AddComponent(Component* c)
 {
 	c->object = this;
 	c->transform = transform;
