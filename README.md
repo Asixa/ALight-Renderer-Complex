@@ -31,4 +31,4 @@ The required library files are already included in the project, but make sure yo
 
 ## License
 
-[MIT](LICENSE) © Richard Littauer
+[MIT](LICENSE) © Xingyu Chen
