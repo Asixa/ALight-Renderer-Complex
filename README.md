@@ -10,7 +10,7 @@ This repository contains:
 ## Table of Contents
 
 
-- [Dependence and requirements](# Dependence and requirements)
+- [Dependence](# Dependence and requirements)
 - [Usage](#usage)
 
 - [Gallery](#Gallery)
