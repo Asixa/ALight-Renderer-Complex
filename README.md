@@ -10,9 +10,9 @@ This repository contains:
 ## Table of Contents
 
 
-- [Dependence](# Dependence and requirements)
-- [Usage](#usage)
 
+- [Usage](#usage)
+  - [Dependence](#Dependence-And-Requirements)
 - [Gallery](#Gallery)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
@@ -20,7 +20,7 @@ This repository contains:
 
 ## Usage
 
-## Dependence and requirements
+## Dependence-And-Requirements
 This project was compiled using visual studio 2019. The cmake file is currently not available.
 
 The required library files are already included in the project, but make sure your computer is a 64-bit operating system and has the appropriate graphics card.
