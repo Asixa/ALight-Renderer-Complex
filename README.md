@@ -9,28 +9,25 @@ This repository contains:
 
 ## Table of Contents
 
-- [Background](#background)
-- [Dependence and requirements](#Dependence and requirements)
+
+- [Dependence and requirements](# Dependence and requirements)
 - [Usage](#usage)
-	- [Generator](#generator)
-- [Badge](#badge)
-- [Example Readmes](#example-readmes)
-- [Related Efforts](#related-efforts)
+
+- [Gallery](#Gallery)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Usage
 
 ## Dependence and requirements
 This project was compiled using visual studio 2019. The cmake file is currently not available.
 
 The required library files are already included in the project, but make sure your computer is a 64-bit operating system and has the appropriate graphics card.
+## Gallery
+
 ## Maintainers
-
 [@Asixa](https://github.com/Asixa).
-
-### Contributors
-This project exists thanks to all the people who contribute. 
-<a href="graphs/contributors"><img src="https://opencollective.com/standard-readme/contributors.svg?width=890&button=false" /></a>
 
 ## License
 
