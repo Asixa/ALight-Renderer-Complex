@@ -1,11 +1,12 @@
 #pragma once
 #include "imgui/imgui.h"
+namespace ALightCreator {
+	class UILayout
+	{
+	public:
 
-class UILayout
-{
-public:
-
-	virtual void Init(){}
-	virtual void Render(){};
-	virtual void Terminate(){};
-};
+		virtual void Init() {}
+		virtual void Render() {};
+		virtual void Terminate() {};
+	};
+}

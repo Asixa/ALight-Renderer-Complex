@@ -35,6 +35,7 @@ int ALightCreator::Application::InitWindow()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 #endif
 }
@@ -49,9 +50,13 @@ int ALightCreator::Application::CreateWindow()
 	}
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Enable vsync
-	glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
+	glfwSetFramebufferSizeCallback(window, OnSizeChangedCallback);
 	glfwSetCursorPosCallback(window, MouseCallback);
 	glfwSetScrollCallback(window, ScrollCallback);
+
+	// GLFWimage images[2];
+	// images[0] = load_icon("my_icon.png");
+	//glfwSetWindowIcon(window, 0, images);
 	Input::GetInstance().window = window;
 }
 
@@ -104,7 +109,7 @@ void ALightCreator::Application::InitImGui()
 	Styles::CustomStyle1();
 }
 
-void ALightCreator::Application::ImguiLoop()
+void ALightCreator::Application::ImGuiLoop()
 {
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
@@ -112,7 +117,6 @@ void ALightCreator::Application::ImguiLoop()
 	ImGui::NewFrame();
 
 	UIlayout->Render();
-	// Rendering
 	ImGui::Render();
 
 }
@@ -126,7 +130,7 @@ void ALightCreator::Application::MainLoop()
 		Engine::GetInstance().Update();
 		Input::GetInstance().Clear();
 		ProcessInput(window);
-		ImguiLoop();
+		ImGuiLoop();
 
 		glViewport(0, 0, 800, 600);
 		glClearColor(0.2f,0.2f,0.2f,1);
@@ -137,7 +141,7 @@ void ALightCreator::Application::MainLoop()
 		auto& io = ImGui::GetIO(); (void)io;
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
-			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			const auto backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault(); glEnable(GL_DEPTH_TEST);
 			glfwMakeContextCurrent(backup_current_context);
@@ -147,7 +151,7 @@ void ALightCreator::Application::MainLoop()
 	}
 }
 
-void ALightCreator::Application::Terminate()
+void ALightCreator::Application::Terminate() const
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
@@ -163,7 +167,7 @@ void ALightCreator::Application::ProcessInput(GLFWwindow* window)
 		glfwSetWindowShouldClose(window, true);
 }
 
-void ALightCreator::Application::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
+void ALightCreator::Application::OnSizeChangedCallback(GLFWwindow* window, int width, int height)
 {
 	//glViewport(0, 0, width, height);
 }

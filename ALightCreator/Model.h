@@ -1,33 +1,16 @@
 #pragma once
-#ifndef MODEL_H
-#define MODEL_H
-
-#include <glad/glad.h> 
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "Mesh.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
-#include "Mesh.h"
-#include "shader.h"
-
-#include <string>
-#include "stb_image.h"
 #include <iostream>
-#include <map>
-#include <vector>
-
-
-namespace ALightCreator {
-	unsigned static  int TextureFromFile(const char* path, const std::string& directory, bool gamma = false);
+namespace  ALightCreator {
 	class Model
 	{
 	public:
 		/*  Model Data */
-		std::vector<Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
-		std::vector<Mesh> meshes;
+		std::vector<ALightCreator::Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+		std::vector<ALightCreator::Mesh> meshes;
 		std::string directory;
 		bool gammaCorrection;
 
@@ -35,16 +18,14 @@ namespace ALightCreator {
 		// constructor, expects a filepath to a 3D model.
 		Model(std::string const& path, bool gamma = false) : gammaCorrection(gamma)
 		{
-
 			loadModel(path);
 		}
 
 		// draws the model, and thus all its meshes
-		void Draw(Shader shader)
-		{
-			for (auto& mesh : meshes)
-				mesh.Draw(shader);
-		}
+		// void Draw(Shader shader)
+		// {
+		// 	for (auto& mesh : meshes)mesh.Draw(shader);
+		// }
 
 	private:
 		/*  Functions   */
@@ -65,7 +46,7 @@ namespace ALightCreator {
 
 			// process ASSIMP's root node recursively
 			processNode(scene->mRootNode, scene);
-			//printf("加载模型完毕 %d", meshes[0].indices.size());
+			printf("加载模型完毕 %d\n", meshes[0].indices.size());
 		}
 
 		// processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
@@ -97,7 +78,7 @@ namespace ALightCreator {
 			// Walk through each of the mesh's vertices
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 			{
-				Vertex vertex;
+				ALightCreator::Vertex vertex;
 				glm::vec3 vector; // we declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
 				// positions
 				vector.x = mesh->mVertices[i].x;
@@ -161,16 +142,16 @@ namespace ALightCreator {
 			// normal: texture_normalN
 
 			// 1. diffuse maps
-			std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+			std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 			// 2. specular maps
-			std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+			std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			// 3. normal maps
-			std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+			std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
 			textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 			// 4. height maps
-			std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+			std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 			textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
 			// return a mesh object created from the extracted mesh data
@@ -179,7 +160,7 @@ namespace ALightCreator {
 
 		// checks all material textures of a given type and loads the textures if they're not loaded yet.
 		// the required info is returned as a Texture struct.
-		std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
+		std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 		{
 			std::vector<Texture> textures;
 			for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -199,8 +180,8 @@ namespace ALightCreator {
 				}
 				if (!skip)
 				{   // if texture hasn't been loaded already, load it
-					Texture texture;
-					texture.id = TextureFromFile(str.C_Str(), this->directory,false);
+					Texture texture(str.C_Str(), this->directory, false);
+					//texture.id = TextureFromFile(str.C_Str(), this->directory, false);
 					texture.type = typeName;
 					texture.path = str.C_Str();
 					textures.push_back(texture);
@@ -210,44 +191,4 @@ namespace ALightCreator {
 			return textures;
 		}
 	};
-
-
-	unsigned static  int TextureFromFile(const char* path, const std::string& directory, bool gamma)
-	{
-		std::string filename = std::string(path);
-		filename = directory + '/' + filename;
-		static int index = 1;
-		unsigned int textureID;
-		glGenTextures(1, &textureID);
-		glActiveTexture(GL_TEXTURE1 + index++);
-		int width, height, nrComponents;
-		unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
-		if (data)
-		{
-			GLenum format;
-			if (nrComponents == 1)
-				format = GL_RED;
-			else if (nrComponents == 3)
-				format = GL_RGB;
-			else if (nrComponents == 4)
-				format = GL_RGBA;
-
-			glBindTexture(GL_TEXTURE_2D, textureID);
-			glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-			glGenerateMipmap(GL_TEXTURE_2D);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		}
-		else
-		{
-			std::cout << "Texture failed to load at path: " << path << std::endl;
-
-		}
-		stbi_image_free(data);
-		return textureID;
-	}
 }
-#endif

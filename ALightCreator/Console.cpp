@@ -1,10 +1,10 @@
-#include "Output.h"
+#include "Console.h"
+using namespace ALightCreator;
 
-
-void Output::Render()
+void Console::Render()
 {
 
-	ImGui::Begin("Output", &enabled);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+	ImGui::Begin("Console", &enabled);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 	//if (ImGui::SmallButton("[Debug] Add 5 entries"))
 	//{
 	//	static int counter = 0;
@@ -97,24 +97,24 @@ void Output::Render()
 	ImGui::End();
 }
 
-Output::Output()
+Console::Console()
 {
 	AutoScroll = true;
 	Clear();
 }
 
-void Output::Clear()
+void Console::Clear()
 {
 	Buf.clear();
 	LineOffsets.clear();
 	LineOffsets.push_back(0);
 }
 
-Output& Output::GetInstance()
- {static Output instance; return instance; }
+Console& Console::GetInstance()
+ {static Console instance; return instance; }
 
 
-void Output::AddLog(const char* fmt, ...)
+void Console::AddLog(const char* fmt, ...)
 {
 	int old_size = Buf.size();
 	va_list args;

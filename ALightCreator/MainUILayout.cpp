@@ -1,12 +1,14 @@
 #include "MainUILayout.h"
-#include "GLRenderer.h"
+
 #include "Viewport.h"
 #include "Project.h"
-#include "Property.h"
+#include "Inspector.h"
 #include "Hierarchy.h"
-#include "Output.h"
+#include "Console.h"
+#include "../ALight-OpenGL/GLRenderer.h"
 #define  MenuBarHeight 20
 #define  ToolBarHeight 32
+using namespace ALightCreator;
 
 MainUILayout::MainUILayout()
 {
@@ -16,9 +18,9 @@ void MainUILayout::Init()
 {
 	panels.push_back(new Viewport(new ALight_OpenGL::GLRenderer()));
 	panels.push_back(new Project());
-	panels.push_back(new Property());
+	panels.push_back(new Inspector());
 	panels.push_back(new Hierarchy());
-	panels.push_back(new Output());
+	panels.push_back(new Console());
 }
 void ToolBar()
 {
@@ -30,7 +32,7 @@ void ToolBar()
 	ImGui::SetNextWindowBgAlpha(1);
 	ImGui::SetNextWindowViewport(viewport->ID);
 	ImGuiWindowFlags window_flags = 
-		ImGuiWindowFlags_NoScrollWithMouse
+	ImGuiWindowFlags_NoScrollWithMouse
 	| ImGuiWindowFlags_AlwaysAutoResize
 	| ImGuiWindowFlags_NoScrollbar
 	| ImGuiWindowFlags_NoTitleBar
@@ -38,11 +40,9 @@ void ToolBar()
 	| ImGuiWindowFlags_NoResize
 	| ImGuiWindowFlags_NoMove
 	| ImGuiWindowFlags_NoDocking
-	//| ImGuiWindowFlags_NoBackground
-	| ImGuiWindowFlags_NoNav
-	;
+	| ImGuiWindowFlags_NoNav;
 	
-	ImGui::Begin("233", nullptr,window_flags);
+	ImGui::Begin("Toolbar", nullptr,window_flags);
 	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 	auto CursorY = ImGui::GetCursorPosY();
@@ -64,10 +64,31 @@ void ToolBar()
 	ImGui::Button(" ", ImVec2(30, 25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
 
 
-	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowSize().x - 300), ImGui::GetCursorPosY()));
+	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowSize().x - 220), CursorY + 2));
 	static int currentLayer; 
 	static int currentLayout;
 	ImGui::SetNextItemWidth(100);
+
+	const char* names[] = { "Bream", "Haddock", "Mackerel", "Pollock", "Tilefish" };
+	static bool toggles[] = { true, false, false, false, false };
+	if (ImGui::Button("Layers", ImVec2(100, 20)))ImGui::OpenPopup("view_layer_popup");
+	if (ImGui::BeginPopup("view_layer_popup"))
+	{
+		for (int i = 0; i < IM_ARRAYSIZE(names); i++)
+			ImGui::MenuItem(names[i], "", &toggles[i]);
+
+
+		ImGui::Separator();
+		// ImGui::Text("Tooltip here");
+		// if (ImGui::IsItemHovered())ImGui::SetTooltip("I am a tooltip over a popup");
+
+		if (ImGui::MenuItem("Edit Layers")){}
+
+		ImGui::EndPopup();
+	}
+
+
+	
 	ImGui::Combo("", &currentLayer, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
 	ImGui::Combo("", &currentLayout, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
 

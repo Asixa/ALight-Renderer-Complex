@@ -1,5 +1,6 @@
 #include "Project.h"
-
+#include "Engine.h"
+using namespace ALightCreator;
 
 void Project::Render()
 {

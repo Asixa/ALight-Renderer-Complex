@@ -1,7 +1,15 @@
 #pragma once
 #include "Panel.h"
-#include "GLRenderer.h"
-class Hierarchy final:public Panel
-{
-	void Render() override;
-};
+
+namespace ALightCreator {
+	class Object;
+	class Transform;
+
+	class Hierarchy final :public Panel
+	{
+
+		void DrawTransform(Object* t);
+	public:
+		void Render() override;
+	};
+}

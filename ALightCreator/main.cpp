@@ -5,13 +5,12 @@
 
 //This project is dedicated to CSE410 and started on September 10th 2019
 #include "Application.h"
-#include "GLRenderer.h"
 #include "MainUILayout.h"
-
 int main()
 {
 	ALightCreator::Application app("ALight Creator [CSE410 by Xingyu Chen]", 1280, 720);
-	app.UIlayout = new MainUILayout();
+	app.UIlayout = new ALightCreator::MainUILayout();
 	app.Run();
+	system("Pause");
 	return 0;
 }

@@ -16,3 +16,8 @@ void ALightCreator::Transform::Update()
 	Right = glm::normalize(glm::cross(Front, glm::vec3(0.0f, 1.0f, 0.0f)));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
 	Up = glm::normalize(glm::cross(Right, Front));
 }
+
+void Transform::SetParent(Transform* t)
+{
+	parent = t;
+}

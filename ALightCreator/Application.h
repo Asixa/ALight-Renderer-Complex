@@ -41,11 +41,12 @@ namespace ALightCreator {
 		int CreateWindow();
 		int InitializeOpenGlLoader();
 		void InitImGui();
-		void ImguiLoop();
+		void ImGuiLoop();
 		void MainLoop();
-		void Terminate();
+		void Terminate() const;
+		
 		auto ProcessInput(GLFWwindow* window) -> void;
-		static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
+		static void OnSizeChangedCallback(GLFWwindow* window, int width, int height);
 		static void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
 	};
