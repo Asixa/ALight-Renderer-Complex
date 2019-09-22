@@ -9,7 +9,7 @@ namespace ALightCreator {
 	public:
 		void Start();
 		void Update();
-		static Engine& GetInstance();
+		static Engine& GetInstance() { static Engine instance; return instance; }
 		Scene* scene;
 	};
 }

@@ -10,7 +10,7 @@ namespace ALight_OpenGL {
 	public:
 
 		unsigned int ID;
-		Texture* texture;
+		Texture* origin;
 
 		GLTexture(Texture* t);
 	};
@@ -21,7 +21,7 @@ namespace ALight_OpenGL {
 		static int index = 1;
 		glGenTextures(1, &ID);
 		glActiveTexture(GL_TEXTURE1 + index++);
-
+		origin = t;
 
 		if (t->data)
 		{
@@ -45,8 +45,7 @@ namespace ALight_OpenGL {
 		else
 		{
 			std::cout << "Texture failed to load at path: " << t->path << std::endl;
-
 		}
-		texture->Free();
+		origin->Free();
 	}
 }

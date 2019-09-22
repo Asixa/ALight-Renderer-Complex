@@ -4,12 +4,14 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <iostream>
+#include "Resource.h"
+
 namespace  ALightCreator {
 	class Model
 	{
 	public:
 		/*  Model Data */
-		std::vector<ALightCreator::Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+		//std::vector<ALightCreator::Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
 		std::vector<ALightCreator::Mesh> meshes;
 		std::string directory;
 		bool gammaCorrection;
@@ -43,7 +45,7 @@ namespace  ALightCreator {
 			}
 			// retrieve the directory path of the filepath
 			directory = path.substr(0, path.find_last_of('/'));
-
+		
 			// process ASSIMP's root node recursively
 			processNode(scene->mRootNode, scene);
 			printf("加载模型完毕 %d\n", meshes[0].indices.size());
@@ -70,10 +72,11 @@ namespace  ALightCreator {
 
 		Mesh processMesh(aiMesh* mesh, const aiScene* scene)
 		{
+			
 			// data to fill
 			std::vector<Vertex> vertices;
 			std::vector<unsigned int> indices;
-			std::vector<Texture> textures;
+			std::vector<int> textures;
 
 			// Walk through each of the mesh's vertices
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++)
@@ -86,7 +89,8 @@ namespace  ALightCreator {
 				vector.z = mesh->mVertices[i].z;
 				vertex.Position = vector;
 				// normals
-				if (mesh->mNormals->Length() < i)vector = glm::vec3(1);
+				if(mesh->mNormals == nullptr)vector = glm::vec3(1);
+				else if (mesh->mNormals->Length() < i)vector = glm::vec3(1);
 				else
 				{
 					vector.x = mesh->mNormals[i].x;
@@ -95,7 +99,8 @@ namespace  ALightCreator {
 				}
 				vertex.Normal = vector;
 				// texture coordinates
-				if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+				if (mesh->mTextureCoords == nullptr)vector = glm::vec3(1);
+				else if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
 				{
 					glm::vec2 vec;
 					// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
@@ -104,10 +109,11 @@ namespace  ALightCreator {
 					vec.y = mesh->mTextureCoords[0][i].y;
 					vertex.TexCoords = vec;
 				}
-				else
-					vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+				else vertex.TexCoords = glm::vec2(0.0f, 0.0f);
 				// tangent
-				if (mesh->mTangents->Length() < i)vector = glm::vec3(1);
+				
+				if (mesh->mTangents == nullptr)vector = glm::vec3(1);
+				else if (mesh->mTangents->Length() < i)vector = glm::vec3(1);
 				else {
 					vector.x = mesh->mTangents[i].x;
 					vector.y = mesh->mTangents[i].y;
@@ -115,7 +121,8 @@ namespace  ALightCreator {
 				}
 				vertex.Tangent = vector;
 				// bitangent
-				if (mesh->mBitangents->Length() < i)vector = glm::vec3(1);
+				if (mesh->mBitangents == nullptr)vector = glm::vec3(1);
+				else if (mesh->mBitangents->Length() < i)vector = glm::vec3(1);
 				else {
 					vector.x = mesh->mBitangents[i].x;
 					vector.y = mesh->mBitangents[i].y;
@@ -140,55 +147,63 @@ namespace  ALightCreator {
 			// diffuse: texture_diffuseN
 			// specular: texture_specularN
 			// normal: texture_normalN
-
+	
 			// 1. diffuse maps
-			std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+			std::vector<int> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 			// 2. specular maps
-			std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+			std::vector<int> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			// 3. normal maps
-			std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+			std::vector<int> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
 			textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 			// 4. height maps
-			std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+			std::vector<int> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 			textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
 			// return a mesh object created from the extracted mesh data
+		
 			return Mesh(vertices, indices, textures);
 		}
 
 		// checks all material textures of a given type and loads the textures if they're not loaded yet.
 		// the required info is returned as a Texture struct.
-		std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
+		std::vector<int> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 		{
-			std::vector<Texture> textures;
+		
+			std::vector<int> texturesID;
+
 			for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
 			{
 				aiString str;
 				mat->GetTexture(type, i, &str);
 				// check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
 				bool skip = false;
-				for (auto& j : textures_loaded)
+
+				for (int j=0;j<Resource::GetInstance().textures.size();j++)
 				{
-					if (std::strcmp(j.path.data(), str.C_Str()) == 0)
+
+					if (std::strcmp(Resource::GetInstance().textures[j]->path.c_str(), str.C_Str()) == 0)
 					{
-						textures.push_back(j);
+
+						texturesID.push_back(j);
 						skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
 						break;
 					}
 				}
 				if (!skip)
 				{   // if texture hasn't been loaded already, load it
-					Texture texture(str.C_Str(), this->directory, false);
+	
+					auto texture=new Texture(str.C_Str(), this->directory, false);
+					int id =  Resource::GetInstance().textures.size();
+					//Resource::GetInstance().textures.push_back(texture);
 					//texture.id = TextureFromFile(str.C_Str(), this->directory, false);
-					texture.type = typeName;
-					texture.path = str.C_Str();
-					textures.push_back(texture);
-					textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+					texture->type = typeName;
+					texture->path = str.C_Str();
+					texturesID.push_back(id);
+					Resource::GetInstance().textures.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
 				}
 			}
-			return textures;
+			return texturesID;
 		}
 	};
 }

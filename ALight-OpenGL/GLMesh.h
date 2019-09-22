@@ -1,33 +1,27 @@
 #ifndef MESH_H
 #define MESH_H
-
-#include <glad/glad.h> // holds all OpenGL type declarations
-#include <glm/glm.hpp>
+#include <glad/glad.h> 
 #include <string>
 #include <vector>
 #include "../ALightCreator/Mesh.h"
 #include "GLShader.h"
+#include "GLResource.h"
 
 namespace ALight_OpenGL {
 
 	class GLMesh {
 	public:
-		/*  Mesh Data  */
-		ALightCreator::Mesh* mesh;
+
+		Mesh* mesh;
 		unsigned int VAO;
-		std::vector<GLTexture> textures;
-		/*  Functions  */
-		// constructor
+		std::vector<int> tids;
 		GLMesh(Mesh *m)
 		{
 			mesh = m;
-			for (auto& i : mesh->textures)textures.emplace_back(&i);
-			printf("Meshes count: %d\n", textures.size());
-			// now that we have all the required data, set the vertex buffers and its attribute pointers.
+			for (auto i : mesh->texturesID)tids.emplace_back(i);
 			SetupMesh();
 		}
 
-		// render the mesh
 		void Draw(GLShader shader)
 		{
 			// bind appropriate textures
@@ -35,12 +29,12 @@ namespace ALight_OpenGL {
 			unsigned int specularNr = 1;
 			unsigned int normalNr = 1;
 			unsigned int heightNr = 1;
-			for (unsigned int i = 0; i < textures.size(); i++)
+			for (unsigned int i = 0; i < tids.size(); i++)
 			{
 				glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
 				// retrieve texture number (the N in diffuse_textureN)
 				std::string number;
-				std::string name = textures[i].texture->type;
+				std::string name = GLResource::GetInstance().textures[tids[i]]->origin->type;
 				if (name == "texture_diffuse")
 					number = std::to_string(diffuseNr++);
 				else if (name == "texture_specular")
@@ -53,7 +47,7 @@ namespace ALight_OpenGL {
 														 // now set the sampler to the correct texture unit
 				glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
 				// and finally bind the texture
-				glBindTexture(GL_TEXTURE_2D, textures[i].ID);
+				glBindTexture(GL_TEXTURE_2D, GLResource::GetInstance().textures[tids[i]]->ID);
 			}
 
 			// draw mesh

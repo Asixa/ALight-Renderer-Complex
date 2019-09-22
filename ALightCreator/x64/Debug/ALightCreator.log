@@ -1,2 +1,20 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ALightVKGL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  MainUILayout.cpp
+LINK : warning LNK4098: Ĭ�Ͽ⡰MSVCRT�����������ʹ�ó�ͻ����ʹ�� /NODEFAULTLIB:library
+Transform.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Transform.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+Console.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Console.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+Object.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Object.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+Light.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Light.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui_widgets.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui_widgets.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui_impl_opengl3.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui_impl_opengl3.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui_impl_glfw.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui_impl_glfw.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui_draw.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui_draw.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui_demo.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui_demo.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+imgui.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�imgui.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+ImSequencer.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�ImSequencer.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+ImGuizmo.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�ImGuizmo.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+ImGradient.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�ImGradient.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+ImCurveEdit.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�ImCurveEdit.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+Editor.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Editor.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
+Camera.obj : warning LNK4099: δ�ҵ� PDB��vc142.pdb��(ʹ�á�Camera.obj�����ڡ�F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\vc142.pdb����Ѱ��)���������Ӷ�����ͬû�е�����Ϣһ��
   ALightCreator.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\ALightCreator.exe

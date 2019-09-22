@@ -2,7 +2,6 @@
 
 #include <vector>
 #include "../ALightCreator/Renderer.h"
-#include "GLShader.h"
 using namespace  ALightCreator;
 
 namespace ALight_OpenGL {
@@ -18,7 +17,7 @@ namespace ALight_OpenGL {
 		unsigned int FrameBuffer() override;
 		void Resize(int w, int h)override;
 	private:
-		std::vector<GLShader>GLShaders;
+		
 
 		
 		unsigned int framebuffer;

@@ -29,4 +29,3 @@ void ALightCreator::Engine::Update()
 	}
 }
 
-ALightCreator::Engine& ALightCreator::Engine::GetInstance(){static Engine instance;return instance;}

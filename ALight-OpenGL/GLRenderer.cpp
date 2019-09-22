@@ -21,24 +21,29 @@ void GLRenderer::Init()
 
 void GLRenderer::InitShader()
 {
-	for (auto shader : shaders)GLShaders.emplace_back(&shader);
-	//GLShaders.emplace_back("shaders/1.model_loading.vs", "shaders/1.model_loading.fs");
+	Resource::GetInstance().shaders.push_back(new Shader("shaders/1.model_loading.vs", "shaders/1.model_loading.fs"));
+	for (auto& shader : Resource::GetInstance().shaders)
+		GLResource::GetInstance().GLShaders.push_back(new GLShader(shader));
 }
 
 void GLRenderer::InitTexture()
 {
+	for (auto& texture : Resource::GetInstance().textures)GLResource::GetInstance().textures.push_back(new GLTexture(texture));
 }
 
 void GLRenderer::InitData()
 {
 	
-	our_model = new GLModel(new Model("../Resources/Objects/sponzaLarge/sponza.obj"));
+	auto m = new Model("../Resources/Objects/sponzaLarge/sponza.obj");
+
+	our_model = new GLModel(m);
 	InitFrameBuffer(800, 600);
 }
 
 
 void GLRenderer::RenderLoop()
 {
+	
 
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 	glEnable(GL_DEPTH_TEST);
@@ -48,16 +53,17 @@ void GLRenderer::RenderLoop()
 
 
 	// DrawScene
-	GLShaders[0].use();
-	GLShaders[0].setMat4("projection", Camera::main->projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
-	GLShaders[0].setMat4("view", Camera::main->view);
+	GLResource::GetInstance().GLShaders[0]->use();
+	GLResource::GetInstance().GLShaders[0]->setMat4("projection", Camera::main->projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+	GLResource::GetInstance().GLShaders[0]->setMat4("view", Camera::main->view);
 
 
 	glm::mat4 model = glm::make_mat4(Engine::GetInstance().scene->objectMatrix);
 	model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 	model = glm::scale(model, glm::vec3(0.002f, 0.002f, 0.002f));
-	GLShaders[0].setMat4("model", model);
-	our_model->Draw(GLShaders[0]);
+	
+	GLResource::GetInstance().GLShaders[0]->setMat4("model", model);
+	our_model->Draw(*GLResource::GetInstance().GLShaders[0]);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 }

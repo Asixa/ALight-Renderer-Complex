@@ -5,7 +5,7 @@ namespace ALightCreator {
 	class  Renderer
 	{
 	public:
-		std::vector<Shader>shaders;
+		//std::vector<Shader>shaders;
 		
 		virtual void Init() {};
 		virtual void RenderLoop() {};

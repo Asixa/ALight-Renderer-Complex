@@ -5,7 +5,8 @@
 #include "Inspector.h"
 #include "Hierarchy.h"
 #include "Console.h"
-#include "../ALight-OpenGL/GLRenderer.h"
+#include "Define.h"
+
 #define  MenuBarHeight 20
 #define  ToolBarHeight 32
 using namespace ALightCreator;
@@ -16,7 +17,7 @@ MainUILayout::MainUILayout()
 
 void MainUILayout::Init()
 {
-	panels.push_back(new Viewport(new ALight_OpenGL::GLRenderer()));
+	panels.push_back(new Viewport(new RENDERER_TYPE));
 	panels.push_back(new Project());
 	panels.push_back(new Inspector());
 	panels.push_back(new Hierarchy());

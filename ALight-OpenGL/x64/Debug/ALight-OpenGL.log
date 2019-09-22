@@ -1,22 +1,6 @@
 ﻿  GLRenderer.cpp
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(49,11): warning C4477:  “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“unsigned __int64”
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(49,11): message :  请考虑在格式字符串中使用“%zd”
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(25,11): warning C4477:  “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“unsigned __int64”
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(25,11): message :  请考虑在格式字符串中使用“%zd”
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(61,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(63,8): error C2065:  “textures”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(74,1): error C2039:  “Texture”: 不是“ALight_OpenGL::GLMesh”的成员
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(13): message :  参见“ALight_OpenGL::GLMesh”的声明
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(74,15): error C2146:  语法错误: 缺少“;”(在标识符“texture”的前面)
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(74,23): error C2065:  “str”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(74,1): error C2039:  “directory”: 不是“ALight_OpenGL::GLModel”的成员
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(26): message :  参见“ALight_OpenGL::GLModel”的声明
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(74,15): error C3861:  “texture”: 找不到标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(76,7): error C2065:  “texture”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(76,22): error C2065:  “typeName”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(77,7): error C2065:  “texture”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(77,22): error C2065:  “str”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(78,7): error C2065:  “textures”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(78,26): error C2065:  “texture”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(79,33): error C2065:  “texture”: 未声明的标识符
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLModel.h(82,12): error C2065:  “textures”: 未声明的标识符
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(51,11): warning C4477:  “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“unsigned __int64”
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(51,11): message :  请考虑在格式字符串中使用“%zd”
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(197,1): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(55,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  ALight-OpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\ALight-OpenGL.lib

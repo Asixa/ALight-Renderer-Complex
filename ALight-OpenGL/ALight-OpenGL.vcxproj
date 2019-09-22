@@ -25,6 +25,7 @@
     <ClInclude Include="GLRenderer.h" />
     <ClInclude Include="GLMesh.h" />
     <ClInclude Include="GLModel.h" />
+    <ClInclude Include="GLResource.h" />
     <ClInclude Include="GLShader.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="stb_image.h" />

@@ -10,5 +10,6 @@
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="GLModel.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="GLResource.h" />
   </ItemGroup>
 </Project>

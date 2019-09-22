@@ -255,6 +255,10 @@
     <ClInclude Include="Shader.h">
       <Filter>Engine\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\1.model_loading.fs">
