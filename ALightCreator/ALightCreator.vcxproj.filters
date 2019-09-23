@@ -80,6 +80,9 @@
     <ClCompile Include="Inspector.cpp">
       <Filter>Engine\UI</Filter>
     </ClCompile>
+    <ClCompile Include="BufferRenderer.cpp">
+      <Filter>Engine\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Externs">
@@ -259,6 +262,9 @@
       <Filter>Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="Define.h" />
+    <ClInclude Include="BufferRenderer.h">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\1.model_loading.fs">

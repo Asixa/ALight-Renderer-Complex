@@ -48,7 +48,6 @@ namespace  ALightCreator {
 		
 			// process ASSIMP's root node recursively
 			processNode(scene->mRootNode, scene);
-			printf("加载模型完毕 %d\n", meshes[0].indices.size());
 		}
 
 		// processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).

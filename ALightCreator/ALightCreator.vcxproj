@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BufferRenderer.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BufferRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMove.h" />
     <ClInclude Include="Component.h" />

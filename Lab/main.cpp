@@ -30,8 +30,30 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+class CBase
+{
+public:
+	CBase(){};
+	virtual void Walk() { cout << "CBase:Walk" << endl; }
+	virtual void Jump() { cout << "CBase:Jump" << endl; }
+	void Run(int speed) { cout << "CBase:Run:" << "Speed=" << speed << endl; }
+};
+class CDerivedA : public CBase
+{
+public:
+	CDerivedA(){};
+	void Walk() override {  cout << "CDerivedA:Walk" << endl; }
+	void Jump() override { cout << "CDerivedA:Jump" << endl; }
+	void Run(int speed) { cout << "CDerivedA:Run" << "Speed=" << speed << endl; }
+};
+
 int main()
 {
+	CBase* pTmp1 = new CDerivedA;
+	pTmp1->Walk();
+	pTmp1->Run(20);
+	system("Pause");
+	return 0;
 	// glfw: initialize and configure
 	// ------------------------------
 	glfwInit();

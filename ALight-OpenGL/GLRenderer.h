@@ -12,7 +12,7 @@ namespace ALight_OpenGL {
 		void InitShader();
 		void InitTexture();
 		void InitData();
-		void RenderLoop() override;
+		void Update() override;
 		void Terminate() override;
 		unsigned int FrameBuffer() override;
 		void Resize(int w, int h)override;
@@ -20,9 +20,9 @@ namespace ALight_OpenGL {
 		
 
 		
-		unsigned int framebuffer;
-		unsigned int textureColorbuffer;
-		unsigned int rbo;
+		unsigned int framebufferPointer;
+		unsigned int frameColorBuffer;
+		unsigned int frameDepthBuffer;
 		
 		int width = 800, height = 600;
 		void InitFrameBuffer(int w, int h);

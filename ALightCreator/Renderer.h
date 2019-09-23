@@ -5,12 +5,12 @@ namespace ALightCreator {
 	class  Renderer
 	{
 	public:
-		//std::vector<Shader>shaders;
-		
 		virtual void Init() {};
-		virtual void RenderLoop() {};
+		virtual void Update() {};
 		virtual void Terminate() {};
 		virtual unsigned int FrameBuffer() { return 0; };
 		virtual void Resize(int w, int h) {};
 	};
+
+
 }

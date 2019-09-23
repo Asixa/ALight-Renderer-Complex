@@ -1,12 +1,12 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (LearnOpenGL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   main.cpp
 F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\Mesh.h(88,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(93,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(167,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(168,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(172,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(173,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(175,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(176,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(185,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(115,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(189,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(190,11): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(194,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(195,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(197,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(198,10): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Lab\main.cpp(207,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
   Lab.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\Lab.exe

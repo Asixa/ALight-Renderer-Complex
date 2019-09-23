@@ -54,7 +54,7 @@ void Viewport::Render()
 		ImVec2(ImGui::GetCursorScreenPos().x + size.x - 1, ImGui::GetCursorScreenPos().y + size.y - 1),
 		ImVec2(0, 1), ImVec2(1, 0));
 	Editor::GetInstance().EditTransform(glm::value_ptr(Camera::main->view), glm::value_ptr(Camera::main->projection), Engine::GetInstance().scene->objectMatrix, ImVec2(size.x, size.y));
-	renderer->RenderLoop();
+	renderer->Update();
 	ToolBar();
 	Statistics(ImVec2(pos.x + size.x - 10, pos.y +60+30),220,60);
 

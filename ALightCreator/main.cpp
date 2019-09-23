@@ -11,6 +11,5 @@ int main()
 	ALightCreator::Application app("ALight Creator [CSE410 by Xingyu Chen]", 1280, 720);
 	app.UIlayout = new ALightCreator::MainUILayout();
 	app.Run();
-	system("Pause");
 	return 0;
 }

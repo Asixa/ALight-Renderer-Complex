@@ -1,22 +1,16 @@
 #include "RasterRenderer.h"
 
-void ALight_Raster::RasterRenderer::Init()
-{
-}
 
-void ALight_Raster::RasterRenderer::RenderLoop()
-{
-}
 
-void ALight_Raster::RasterRenderer::Terminate()
+void ALight_Raster::RasterRenderer::Render()
 {
-}
-
-unsigned ALight_Raster::RasterRenderer::FrameBuffer()
-{
-	return 0;
-}
-
-void ALight_Raster::RasterRenderer::Resize(int w, int h)
-{
+	for (auto i = 0; i < 800 * 600 ; i++)
+	{
+		auto index = i * 3;
+		if (i % 10 == 0) {
+			buffer[index] = 255;
+			buffer[index + 1] = 0;
+			buffer[index + 2] = 0;
+		}
+	}
 }
