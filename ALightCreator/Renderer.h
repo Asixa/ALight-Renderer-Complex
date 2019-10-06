@@ -11,6 +11,4 @@ namespace ALightCreator {
 		virtual unsigned int FrameBuffer() { return 0; };
 		virtual void Resize(int w, int h) {};
 	};
-
-
 }

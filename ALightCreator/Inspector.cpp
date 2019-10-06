@@ -11,14 +11,14 @@ void Inspector::Render()
 	ImGui::ColorEdit3("", reinterpret_cast<float*>(&(Engine::GetInstance().scene->bgColor))); // Edit 3 floats representing a color
 	if (ImGui::CollapsingHeader("Transform"))
 	{
-		if (ImGui::RadioButton("Translate", Editor::mCurrentGizmoOperation == ImGuizmo::TRANSLATE))
-			Editor::mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
-		ImGui::SameLine();
-		if (ImGui::RadioButton("Rotate", Editor::mCurrentGizmoOperation == ImGuizmo::ROTATE))
-			Editor::mCurrentGizmoOperation = ImGuizmo::ROTATE;
-		ImGui::SameLine();
-		if (ImGui::RadioButton("Scale", Editor::mCurrentGizmoOperation == ImGuizmo::SCALE))
-			Editor::mCurrentGizmoOperation = ImGuizmo::SCALE;
+		// if (ImGui::RadioButton("Translate", Editor::mCurrentGizmoOperation == ImGuizmo::TRANSLATE))
+		// 	Editor::mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+		// ImGui::SameLine();
+		// if (ImGui::RadioButton("Rotate", Editor::mCurrentGizmoOperation == ImGuizmo::ROTATE))
+		// 	Editor::mCurrentGizmoOperation = ImGuizmo::ROTATE;
+		// ImGui::SameLine();
+		// if (ImGui::RadioButton("Scale", Editor::mCurrentGizmoOperation == ImGuizmo::SCALE))
+		// 	Editor::mCurrentGizmoOperation = ImGuizmo::SCALE;
 
 
 		ImGui::InputFloat3("Tr", Editor::GetInstance().matrixTranslation, 3);

@@ -1,0 +1,67 @@
+﻿  RasterRenderer.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,24): warning C4244:  “初始化”: 从“T”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,24): warning C4244:         with
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,24): warning C4244:         [
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,24): warning C4244:             T=float
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,24): warning C4244:         ]
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,32): warning C4244:  “初始化”: 从“T”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,32): warning C4244:         with
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,32): warning C4244:         [
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,32): warning C4244:             T=float
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Point.h(10,32): warning C4244:         ]
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(1425,12): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(1433,12): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(1466,26): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(2509,29): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(2513,29): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(2517,30): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\Common\include\svg\nanosvg.h(2521,31): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(30,24): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(45,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(46,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(48,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(49,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(51,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(52,20): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(58,21): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(59,21): warning C4244:  “=”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\Trianglation.h(69,24): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(17,41): warning C4244:  “=”: 从“double”转换到“T”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(17,41): warning C4244:         with
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(17,41): warning C4244:         [
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(17,41): warning C4244:             T=float
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(17,41): warning C4244:         ]
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(18,40): warning C4244:  “=”: 从“double”转换到“T”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(18,40): warning C4244:         with
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(18,40): warning C4244:         [
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(18,40): warning C4244:             T=float
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(18,40): warning C4244:         ]
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(19,35): warning C4244:  “=”: 从“double”转换到“T”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(19,35): warning C4244:         with
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(19,35): warning C4244:         [
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(19,35): warning C4244:             T=float
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(19,35): warning C4244:         ]
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(76,52): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(76,48): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(77,51): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(77,47): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(78,52): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(78,48): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(79,51): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(79,47): warning C4244:  “参数”: 从“const int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,77): warning C4244:  “参数”: 从“const int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,73): warning C4244:  “参数”: 从“const int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,69): warning C4244:  “参数”: 从“const int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,65): warning C4244:  “参数”: 从“const int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,62): warning C4244:  “参数”: 从“int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(82,59): warning C4244:  “参数”: 从“int”转换到“const float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(158,12): warning C4244:  “初始化”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(158,25): warning C4244:  “初始化”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(176,13): warning C4244:  “初始化”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(177,13): warning C4244:  “初始化”: 从“int”转换到“float”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-Raster\RasterRenderer.cpp(196,14): warning C4244:  “初始化”: 从“int”转换到“float”，可能丢失数据
+Trianglation.obj : warning LNK4006: "void __cdecl triangulate(class std::vector<class ALight_Raster::Point *,class std::allocator<class ALight_Raster::Point *> > const &,class std::vector<class ALight_Raster::Point *,class std::allocator<class ALight_Raster::Point *> > &)" (?triangulate@@YAXAEBV?$vector@PEAVPoint@ALight_Raster@@V?$allocator@PEAVPoint@ALight_Raster@@@std@@@std@@AEAV12@@Z) 已在 Trianglation.obj 中定义；已忽略第二个定义
+Trianglation.obj : warning LNK4006: "bool __cdecl snip(class std::vector<class ALight_Raster::Point *,class std::allocator<class ALight_Raster::Point *> > const &,int,int,int,int,int *)" (?snip@@YA_NAEBV?$vector@PEAVPoint@ALight_Raster@@V?$allocator@PEAVPoint@ALight_Raster@@@std@@@std@@HHHHPEAH@Z) 已在 Trianglation.obj 中定义；已忽略第二个定义
+Trianglation.obj : warning LNK4006: "float __cdecl area(class std::vector<class ALight_Raster::Point *,class std::allocator<class ALight_Raster::Point *> > const &)" (?area@@YAMAEBV?$vector@PEAVPoint@ALight_Raster@@V?$allocator@PEAVPoint@ALight_Raster@@@std@@@std@@@Z) 已在 Trianglation.obj 中定义；已忽略第二个定义
+Trianglation.obj : warning LNK4006: "bool __cdecl inside(float,float,float,float,float,float,float,float)" (?inside@@YA_NMMMMMMMM@Z) 已在 Trianglation.obj 中定义；已忽略第二个定义
+  ALight-Raster.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Release\ALight-Raster.lib

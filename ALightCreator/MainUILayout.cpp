@@ -6,7 +6,10 @@
 #include "Hierarchy.h"
 #include "Console.h"
 #include "Define.h"
-
+#include "Resource.h"
+#include "../ALight-OpenGL/GLTexture.h"
+#include "Editor.h"
+#include "stb_image.h"
 #define  MenuBarHeight 20
 #define  ToolBarHeight 32
 using namespace ALightCreator;
@@ -17,7 +20,11 @@ MainUILayout::MainUILayout()
 
 void MainUILayout::Init()
 {
-	panels.push_back(new Viewport(new RENDERER_TYPE));
+
+	Editor::icons = ALight_OpenGL::GLTexture(new Texture("../Resources/icons3.png"), false).ID;
+	panels.push_back(new Viewport(new RENDERER));
+
+	
 	panels.push_back(new Project());
 	panels.push_back(new Inspector());
 	panels.push_back(new Hierarchy());
@@ -27,7 +34,7 @@ void ToolBar()
 {
 	ImGuiViewport* viewport = ImGui::GetMainViewport();
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0);
-	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(60 / 255.0f, 60 / 255.0f, 60 / 255.0f, 1));
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImGui::GetStyleColorVec4(ImGuiCol_TitleBg));
 	ImGui::SetNextWindowPos(ImVec2(viewport->Pos.x, viewport->Pos.y+20));
 	ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, ToolBarHeight));
 	ImGui::SetNextWindowBgAlpha(1);
@@ -49,28 +56,64 @@ void ToolBar()
 	auto CursorY = ImGui::GetCursorPosY();
 	ImGui::SetCursorPos(ImVec2(10, CursorY ));
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0,0));
-	ImGui::Button(" ", ImVec2(30, 25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
-	ImGui::Button(" ",ImVec2(30,25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
-	ImGui::Button(" ",ImVec2(30,25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
-	ImGui::Button(" ",ImVec2(30,25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
-	ImGui::Button(" ",ImVec2(30,25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
-	ImGui::Button(" ",ImVec2(30,25));ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() +30), CursorY+2));
+
+	
+	ImVec2 a, b;
+	
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2.5));
+	
+	Editor::GetIconInfo(24, 0, &a, &b); ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
+	//Move
+	
+	Editor::GetIconInfo(20, 7, &a, &b);
+	ImGui::PushID("TRANSLATE");
+	if(ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b))
+		Editor::mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+	ImGui::SameLine();
+	ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
+	ImGui::PopID();
+
+	ImGui::PushID("ROTATE");
+	Editor::GetIconInfo(22, 7, &a, &b);
+	if (ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b))
+		Editor::mCurrentGizmoOperation = ImGuizmo::ROTATE;
+	ImGui::SameLine();
+	ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
+	ImGui::PopID();
+
+	ImGui::PushID("SCALE");
+	Editor::GetIconInfo(13, 23, &a, &b);
+	if (ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b))
+		Editor::mCurrentGizmoOperation = ImGuizmo::SCALE;
+	ImGui::SameLine();
+	ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
+	ImGui::PopID();
+	
+	Editor::GetIconInfo(21, 12, &a, &b);
+	ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b);
+	ImGui::SameLine();
+	ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
+	
+	Editor::GetIconInfo(25, 21, &a, &b);
+	ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b);
+	ImGui::SameLine();
+	ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() +30), CursorY+2));
+	
 
 	ImGui::Button(" ", ImVec2(50, 20)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY+2));
 	ImGui::Button(" ", ImVec2(50, 20)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), CursorY));
 	
 	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowSize().x - 30) * 0.5f - 30,  ImGui::GetCursorPosY()));
-	ImGui::Button(" ", ImVec2(30, 25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
-	ImGui::Button(" ", ImVec2(30, 25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
-	ImGui::Button(" ", ImVec2(30, 25)); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
+	Editor::GetIconInfo(1, 10, &a, &b); ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b);  ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
+	Editor::GetIconInfo(4, 10, &a, &b); ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b);; ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
+	Editor::GetIconInfo(2, 10, &a, &b); ImGui::ImageButton(reinterpret_cast<void*>(Editor::icons), ImVec2(20, 20), a, b); ImGui::SameLine(); ImGui::SetCursorPos(ImVec2((ImGui::GetCursorPosX() - 5), ImGui::GetCursorPosY()));
 
-
+	ImGui::PopStyleVar();
 	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowSize().x - 220), CursorY + 2));
-	static int currentLayer; 
-	static int currentLayout;
 	ImGui::SetNextItemWidth(100);
 
-	const char* names[] = { "Bream", "Haddock", "Mackerel", "Pollock", "Tilefish" };
+	
+	const char* names[] = { "Everything", "Nothing", "0:Default", "1:TransparentFX", "2:IgnoreRaycast" };
 	static bool toggles[] = { true, false, false, false, false };
 	if (ImGui::Button("Layers", ImVec2(100, 20)))ImGui::OpenPopup("view_layer_popup");
 	if (ImGui::BeginPopup("view_layer_popup"))
@@ -89,9 +132,6 @@ void ToolBar()
 	}
 
 
-	
-	ImGui::Combo("", &currentLayer, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
-	ImGui::Combo("", &currentLayout, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
 
 
 	
@@ -126,12 +166,9 @@ void Separator()
 void MainUILayout::MenuBar() const
 {
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0);
-	ImGui::PushStyleColor(ImGuiCol_MenuBarBg, ImVec4(60 / 255.0f, 60 / 255.0f, 60 / 255.0f, 1));
+	 ImGui::PushStyleColor(ImGuiCol_MenuBarBg, ImGui::GetStyleColorVec4(ImGuiCol_TitleBg));
 	if (ImGui::BeginMainMenuBar())
 	{
-		ImGui::PopStyleVar();
-		ImGui::PopStyleColor();
-		
 		if (ImGui::BeginMenu("File"))
 		{
 			if (ImGui::MenuItem("New Scene", "CTRL+N")) {}
@@ -283,84 +320,23 @@ void MainUILayout::MenuBar() const
 			ImGui::EndMenu();
 		}
 
+		
 		if (ImGui::BeginMenu("Help"))
 		{
 			if (ImGui::MenuItem("About ALight Creator")) {}
 			ImGui::EndMenu();
 		}
-		ImGui::NewLine();
-		if (ImGui::BeginMenu("Help2")){}
+
+		ImGui::SetCursorPosX(ImGui::GetWindowSize().x-140);
+		ImGui::SetNextItemWidth(140);
+		static int item_current_2;
+		ImGui::Combo(" ", &item_current_2, "Raster-OpenGL\0Raster-CPU\0Raster-Vulkan\0RayTracing-CPU\0RayTracing-CUDA\0\0");
+		
 		ImGui::EndMainMenuBar();
-
+		
 	}
-
-}
-
-void MainUILayout::MenuItem() const
-{
-
-	ImGui::MenuItem("(dummy menu)", NULL, false, false);
-	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {}
-	if (ImGui::BeginMenu("Open Recent"))
-	{
-		ImGui::MenuItem("fish_hat.c");
-		ImGui::MenuItem("fish_hat.inl");
-		ImGui::MenuItem("fish_hat.h");
-		if (ImGui::BeginMenu("More.."))
-		{
-			ImGui::MenuItem("Hello");
-			ImGui::MenuItem("Sailor");
-			if (ImGui::BeginMenu("Recurse.."))
-			{
-				//ShowExampleMenuFile();
-				ImGui::EndMenu();
-			}
-			ImGui::EndMenu();
-		}
-		ImGui::EndMenu();
-	}
-	if (ImGui::MenuItem("Save", "Ctrl+S")) {}
-	if (ImGui::MenuItem("Save As..")) {}
-	ImGui::Separator();
-	if (ImGui::BeginMenu("Options"))
-	{
-		static bool enabled = true;
-		ImGui::MenuItem("Enabled", "", &enabled);
-		ImGui::BeginChild("child", ImVec2(0, 60), true);
-		for (int i = 0; i < 10; i++)
-			ImGui::Text("Scrolling Text %d", i);
-		ImGui::EndChild();
-		static float f = 0.5f;
-		static int n = 0;
-		static bool b = true;
-		ImGui::SliderFloat("Value", &f, 0.0f, 1.0f);
-		ImGui::InputFloat("Input", &f, 0.1f);
-		ImGui::Combo("Combo", &n, "Yes\0No\0Maybe\0\0");
-		ImGui::Checkbox("Check", &b);
-		ImGui::EndMenu();
-	}
-	if (ImGui::BeginMenu("Colors"))
-	{
-		float sz = ImGui::GetTextLineHeight();
-		for (int i = 0; i < ImGuiCol_COUNT; i++)
-		{
-			const char* name = ImGui::GetStyleColorName((ImGuiCol)i);
-			ImVec2 p = ImGui::GetCursorScreenPos();
-			ImGui::GetWindowDrawList()->AddRectFilled(p, ImVec2(p.x + sz, p.y + sz), ImGui::GetColorU32((ImGuiCol)i));
-			ImGui::Dummy(ImVec2(sz, sz));
-			ImGui::SameLine();
-			ImGui::MenuItem(name);
-		}
-		ImGui::EndMenu();
-	}
-	if (ImGui::BeginMenu("Disabled", false)) // Disabled
-	{
-		IM_ASSERT(0);
-	}
-	if (ImGui::MenuItem("Checked", NULL, true)) {}
-	if (ImGui::MenuItem("Quit", "Alt+F4")) {}
-
+	ImGui::PopStyleVar();
+	ImGui::PopStyleColor();
 }
 
 void MainUILayout::DockingSpace(bool* p_open) const

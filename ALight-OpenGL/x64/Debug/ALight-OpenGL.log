@@ -1,4 +1,1 @@
-﻿  GLRenderer.cpp
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(196,1): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
-F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(55,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-  ALight-OpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\ALight-OpenGL.lib
+﻿  ALight-OpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Debug\ALight-OpenGL.lib

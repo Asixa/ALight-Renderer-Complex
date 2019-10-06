@@ -10,8 +10,7 @@ namespace  ALightCreator {
 	class Model
 	{
 	public:
-		/*  Model Data */
-		//std::vector<ALightCreator::Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+	
 		std::vector<ALightCreator::Mesh> meshes;
 		std::string directory;
 		bool gammaCorrection;
@@ -21,13 +20,8 @@ namespace  ALightCreator {
 		Model(std::string const& path, bool gamma = false) : gammaCorrection(gamma)
 		{
 			loadModel(path);
+			printf("%s: 加载%d个网格\n", path, meshes.size());
 		}
-
-		// draws the model, and thus all its meshes
-		// void Draw(Shader shader)
-		// {
-		// 	for (auto& mesh : meshes)mesh.Draw(shader);
-		// }
 
 	private:
 		/*  Functions   */
@@ -53,20 +47,8 @@ namespace  ALightCreator {
 		// processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
 		void processNode(aiNode* node, const aiScene* scene)
 		{
-			// process each mesh located at the current node
-			for (unsigned int i = 0; i < node->mNumMeshes; i++)
-			{
-				// the node object only contains indices to index the actual objects in the scene. 
-				// the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
-				aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-				meshes.push_back(processMesh(mesh, scene));
-			}
-			// after we've processed all of the meshes (if any) we then recursively process each of the children nodes
-			for (unsigned int i = 0; i < node->mNumChildren; i++)
-			{
-				processNode(node->mChildren[i], scene);
-			}
-
+			for (unsigned int i = 0; i < node->mNumMeshes; i++)meshes.push_back(processMesh(scene->mMeshes[node->mMeshes[i]], scene));
+			for (unsigned int i = 0; i < node->mNumChildren; i++)processNode(node->mChildren[i], scene);
 		}
 
 		Mesh processMesh(aiMesh* mesh, const aiScene* scene)

@@ -1,0 +1,7 @@
+﻿  GLRenderer.cpp
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(23,11): warning C4477:  “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“const std::string”
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(23,11): warning C4477:  “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“unsigned __int64”
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(23,11): message :  请考虑在格式字符串中使用“%zd”
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALightCreator\Model.h(178,1): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\ALight-OpenGL\GLMesh.h(55,1): warning C4267:  “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  ALight-OpenGL.vcxproj -> F:\Codes\Projects\Academic\ComputerGraphic\ALightRendererComplex\x64\Release\ALight-OpenGL.lib

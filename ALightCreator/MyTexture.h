@@ -1,9 +1,11 @@
 // #pragma once
 //
 //
-// #include "ModeGL.h"
+//
 // #include <glad/glad.h>
 // #include <iostream>
+// #include "stb_image.h"
+//
 // namespace ALightCreator {
 // 	class  MyTexture
 // 	{
@@ -15,9 +17,9 @@
 //
 // 	inline MyTexture::MyTexture(const char* file)
 // 	{
-// 		static int index = 0;
+// 		//static int index = 0;
 // 		glGenTextures(1, &pointer);
-// 		glActiveTexture(GL_TEXTURE1 + index++);
+// 		//glActiveTexture(GL_TEXTURE1 + index++);
 // 		int width, height, nrComponents;
 // 		unsigned char* data = stbi_load(file, &width, &height, &nrComponents, 0);
 // 		if (data)

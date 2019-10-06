@@ -2,8 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="RasterRenderer.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Math.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RasterRenderer.cpp" />
+    <ClCompile Include="Trianglation.h" />
   </ItemGroup>
 </Project>

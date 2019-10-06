@@ -3,7 +3,7 @@
 #include "Gizmo/ImGuizmo.h"
 #include "Input.h"
 #include "Style.h"
-
+#include "Resource.h"
 
 
 void ALightCreator::Application::Run()
@@ -54,6 +54,12 @@ int ALightCreator::Application::CreateWindow()
 	glfwSetCursorPosCallback(window, MouseCallback);
 	glfwSetScrollCallback(window, ScrollCallback);
 
+	// glGenTextures(1, &Resource::icons);
+	// glBindTexture(GL_TEXTURE_2D, Resource::icons);
+	// int w, h, c;
+	// auto data = stbi_load("..\Resources\icons.png", &w, &h, &c, 0);
+	// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	// glBindTexture(GL_TEXTURE_2D, 0);
 	// GLFWimage images[2];
 	// images[0] = load_icon("my_icon.png");
 	//glfwSetWindowIcon(window, 0, images);

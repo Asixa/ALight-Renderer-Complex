@@ -2,11 +2,13 @@
 #include <glad/glad.h>
 #include <iostream>
 #include "Engine.h"
+#include "Camera.h"
 
 void BufferRenderer::Init()
 {
 	buffer = new unsigned char[height * width * 3];
 	InitFrameBuffer();
+	Start();
 }
 //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, buffer);
 
@@ -21,7 +23,9 @@ void BufferRenderer::Init()
 void BufferRenderer::Update()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, framebufferPointer);
+	if(Clear)std::fill_n(buffer, height * width * 3, 120);
 	Render();
+	
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0,0, width, height, GL_RGB, GL_UNSIGNED_BYTE, buffer);
 	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, buffer); //Show
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -30,6 +34,7 @@ void BufferRenderer::Update()
 void BufferRenderer::Terminate()
 {
 	free(buffer);
+	Destroy();
 }
 
 unsigned BufferRenderer::FrameBuffer()
@@ -41,8 +46,12 @@ unsigned BufferRenderer::FrameBuffer()
 
 void BufferRenderer::Resize(int w, int h)
 {
-	//width = w;
-	//height = h;
+	Camera::main->width = w;
+	Camera::main->height = h;
+	// width = w;
+	// height = h;
+	// free(buffer);
+	// buffer = new unsigned char[height * width * 3];
 }
 
 void BufferRenderer::InitFrameBuffer()

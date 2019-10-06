@@ -15,7 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ALight-RayCPU.cpp">
+    <ClInclude Include="RayCPURenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RayCPURenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
