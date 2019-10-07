@@ -24,11 +24,11 @@ Homework content is in  ALight-Raster Project,
 
 it based on the BufferRenderer from the ALightCreator Project.
 
-![01](GitHub/a (1).png)
-![01](GitHub/a (2).png)
-![01](GitHub/a (3).png)
-![01](GitHub/a (4).png)
-![01](GitHub/a (5).png)
+![01](GitHub/a(1).png)
+![01](GitHub/a(2).png)
+![01](GitHub/a(3).png)
+![01](GitHub/a(4).png)
+![01](GitHub/a(5).png)
 
 ## Dependence-And-Requirements
 This project was compiled using visual studio 2019. The cmake file is currently not available.
