@@ -24,6 +24,8 @@ Homework content is in  ALight-Raster Project,
 
 it based on the BufferRenderer from the ALightCreator Project.
 
+it should be no problem just open the ALightRendererComplex.sln
+
 
 ## Dependence-And-Requirements
 This project was compiled using visual studio 2019. The cmake file is currently not available.
