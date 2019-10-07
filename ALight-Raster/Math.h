@@ -4,7 +4,7 @@ namespace  ALight_Raster
 	class  Math
 	{
 	public:
-		static int Lerp(int a, int b, float t)
+		static int Lerp(int a, int b, float t) //interplote int value
 		{
 			if (t <= 0) return a;
 			if (t >= 1) return b;

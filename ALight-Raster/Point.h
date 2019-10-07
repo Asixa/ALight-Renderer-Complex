@@ -2,7 +2,7 @@
 #include "Math.h"
 #include "glm/vec4.hpp"
 namespace ALight_Raster {
-	class  Point
+	class  Point //Simple point structure, store int.
 	{
 	public:
 		int x, y;

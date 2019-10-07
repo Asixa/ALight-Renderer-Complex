@@ -11,7 +11,7 @@
 #include "../ALightCreator/Engine.h"
 #include "../ALightCreator/Camera.h"
 
-glm::vec4 colorConverter(int hexValue)
+glm::vec4 colorConverter(int hexValue) // yeah... the svg load save the color in hex, so I need to extract rgb form the hex number.
 {
 	glm::vec4 rgbColor;
 	rgbColor.b = ((hexValue >> 16) & 0xFF) / 255.0;  // Extract the RR byte
@@ -22,33 +22,7 @@ glm::vec4 colorConverter(int hexValue)
 }
 void ALight_Raster::RasterRenderer::Render()
 {
-
-
-	
-	float view[4], cx, cy, hw, hh, aspect;
-
-
-	cx = g_image->width * 0.5f;
-	cy = g_image->height * 0.5f;
-	hw = g_image->width * 0.5f;
-	hh = g_image->height * 0.5f;
-
-	if (width / hw < height / hh) {
-		aspect = static_cast<float>(height) / static_cast<float>(width);
-		view[0] = cx - hw * 1.2f;
-		view[2] = cx + hw * 1.2f;
-		view[1] = cy - hw * 1.2f * aspect;
-		view[3] = cy + hw * 1.2f * aspect;
-	}
-	else {
-		aspect = static_cast<float>(width) / static_cast<float>(height);
-		view[0] = cx - hh * 1.2f * aspect;
-		view[2] = cx + hh * 1.2f * aspect;
-		view[1] = cy - hh * 1.2f;
-		view[3] = cy + hh * 1.2f;
-	}
-	const auto px = (view[2] - view[1]) / static_cast<float>(width);
-
+	// Calculate global mvp matrix every frame
 	mvp= glm::make_mat4(Engine::GetInstance().scene->objectMatrix)* 
 		Camera::main->view*
 		Camera::main->projection;
@@ -64,7 +38,7 @@ void ALight_Raster::RasterRenderer::Render()
 }
 
 
-
+//带符号距离场（signed distance field, SDF）永远判断该点是否在线上，然后通过不同的alpha值 来实现抗锯齿
 float SDF(const float px, const float py, const float ax, const float ay, const float bx, const float by, const float r) {
 	const auto pax = px - ax,pay = py - ay, bax = bx - ax, bay = by - ay;
 	const auto h = fmaxf(fminf((pax * bax + pay * bay) / (bax * bax + bay * bay), 1.0f), 0.0f);
@@ -92,9 +66,12 @@ void ALight_Raster::RasterRenderer::DrawPath(float* pts, int npts)
 		pt.push_back(new Point(glm::vec4(p[2], p[3], -100, 1) * mvp));
 		pt.push_back(new Point(glm::vec4(p[4], p[5], -100, 1) * mvp));
 	}
+	//Do the mvp transformation before trianglation
 	triangulate(pt, out);
-	for(int i=0;i<out.size();i+=3)DrawTriangle(&out[i]);
+	for(int i=0;i<out.size();i+=3)DrawTriangle(&out[i]); //Draw triangles
 
+
+	//in this part, I want to draw the outline of the polygon
 	for (auto i = 0; i < npts - 1; i += 3) {
 		const auto p = &pts[i * 2];
 		auto a = new Point(glm::vec4(p[0], p[1], -100, 1) * mvp);
@@ -120,6 +97,9 @@ void ALight_Raster::RasterRenderer::SetPixel(const int x, int y, const glm::vec4
 
 void ALight_Raster::RasterRenderer::Start()
 {
+	// init the scene
+
+	
 	//g_image = nsvgParseFromFile("../Resources/SVG/alpha/02_cube.svg", "px", 96.0f);
 	g_image = nsvgParseFromFile("../Resources/SVG/basic/test4.svg", "px", 96.0f);
 	//g_image = nsvgParseFromFile("../Resources/SVG/alpha/05_sphere.svg", "px", 96.0f);
@@ -127,14 +107,13 @@ void ALight_Raster::RasterRenderer::Start()
 	//g_image = nsvgParseFromFile("../Resources/SVG/illustration/07_lines.svg", "px", 96.0f);
 
 
-	if (g_image == nullptr) {
-		printf("Could not open SVG image.\n");
-	}
+	if (g_image == nullptr) printf("Could not open SVG image.\n");
+	
 }
 
 void ALight_Raster::RasterRenderer::Destroy()
 {
-	nsvgDelete(g_image);
+	nsvgDelete(g_image);  // Free the memory
 }
 
 
@@ -152,7 +131,10 @@ void ALight_Raster::RasterRenderer::FillTriangle(Point* top, Point* down, Point*
 	switch (mode)
 	{
 	case 0:
-	case 1: { //Bottom Flat
+	case 1: {																						//Bottom Flat triangle
+																									//      /\
+																									//     /  \
+																									//    /____\            
 		auto dxy_left = (left->x - top->x) * 1.0f / (left->y - top->y);
 		auto dxy_right = (right->x - top->x) * 1.0f / (right->y - top->y);
 		float xs = top->x, xe = top->x;
@@ -168,7 +150,12 @@ void ALight_Raster::RasterRenderer::FillTriangle(Point* top, Point* down, Point*
 		if (mode == 0) {}
 		else break;
 	}
-		case 2: //Top Flat
+		case 2:																						//Top Flat  triangle
+																									//		_______
+																									//      \     /	
+																									//       \   /
+																									//        \ /
+																									//		   V          
 		{
 	
 			auto dxy_left = (down->x - left->x) * 1.0f / (down->y - left->y);
@@ -189,30 +176,29 @@ void ALight_Raster::RasterRenderer::FillTriangle(Point* top, Point* down, Point*
 
 }
 
-void ALight_Raster::RasterRenderer::ScanLine(int x1, int x2, int y)
+void ALight_Raster::RasterRenderer::ScanLine(int x1, int x2, int y) // simply draw a horizontal line from (x1,y) to (x2,y)
 {
 	auto dx = x1 - x2;
 	if(y>height)return;
 	for (float x=x1;x<=x2;x+=0.5f)
 	{
 		const auto  xIndex = static_cast<int>(x + 0.5f);
-		if (xIndex > 0 && xIndex < width)
-		{
-			SetPixel(xIndex, y, brushColor);
-		}
+		if (xIndex > 0 && xIndex < width)SetPixel(xIndex, y, brushColor);
 	}
 }
 
 void ALight_Raster::RasterRenderer::DrawTriangle(Point** vertices)
 {
+	// sort the vertices by y
+	std::qsort(vertices, 3, sizeof(Point*), [](const void* a, const void* b) {return ((Point * *)a)[0]->y - ((Point * *)b)[0]->y; }); 
+
 	
-	std::qsort(vertices, 3, sizeof(Point*), 
-		[](const void* a, const void* b) {return ((Point * *)a)[0]->y - ((Point * *)b)[0]->y; });
 	if (vertices[1]->y == vertices[2]->y)
-		FillTriangle(vertices[0], vertices[0] /*NULL*/, vertices[1], vertices[2], 1); // BottomFlat
+		FillTriangle(vertices[0], vertices[0] /*NULL*/, vertices[1], vertices[2], 1); // this triangle is BottomFlat triangle, simple
 	else if (vertices[0]->y == vertices[1]->y)
-		FillTriangle(vertices[0] /*NULL*/, vertices[2], vertices[0], vertices[1], 2); // TopFlat
-	else
+		FillTriangle(vertices[0] /*NULL*/, vertices[2], vertices[0], vertices[1], 2); // this triangle is TopFlat triangle
+	
+	else              // other wise we need to cut it, to generate two triangle
 	{
 		auto middle_length = (vertices[1]->y - vertices[0]->y) *
 			(vertices[2]->x - vertices[0]->x) /
@@ -225,7 +211,3 @@ void ALight_Raster::RasterRenderer::DrawTriangle(Point** vertices)
 	}
 }
 
-int ALight_Raster::RasterRenderer::Compare(const void* a, const void* b)
-{
-	return ((Point*)a)->y - ((Point*)b)->y;
-}
