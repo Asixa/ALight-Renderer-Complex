@@ -24,6 +24,7 @@ namespace ALightCreator
 		float bounds[6] = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
 		float boundsSnap[3] = { 0.1f, 0.1f, 0.1f };
 		bool boundSizing = false;
+		bool visible = false;
 		bool boundSizingSnap = false;
 		static ImGuizmo::OPERATION mCurrentGizmoOperation;
 		static ImGuizmo::MODE mCurrentGizmoMode;

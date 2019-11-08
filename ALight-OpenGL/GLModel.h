@@ -30,6 +30,7 @@ namespace ALight_OpenGL {
 		explicit GLModel(Model* m)
 		{
 			origin = m;
+			
 			for (auto& mesh : origin->meshes)meshes.push_back(GLMesh(&mesh));
 		}
 

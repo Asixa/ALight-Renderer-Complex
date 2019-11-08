@@ -12,6 +12,8 @@ namespace ALight_OpenGL {
 		void InitShader();
 		void InitTexture();
 		void InitData();
+
+		void Reload();
 		void Update() override;
 		void Terminate() override;
 		unsigned int FrameBuffer() override;

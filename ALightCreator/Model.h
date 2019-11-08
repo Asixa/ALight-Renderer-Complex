@@ -11,7 +11,7 @@ namespace  ALightCreator {
 	{
 	public:
 	
-		std::vector<ALightCreator::Mesh> meshes;
+		std::vector<Mesh> meshes;
 		std::string directory;
 		bool gammaCorrection;
 
@@ -20,7 +20,12 @@ namespace  ALightCreator {
 		Model(std::string const& path, bool gamma = false) : gammaCorrection(gamma)
 		{
 			loadModel(path);
-			printf("%s: 加载%d个网格\n", path, meshes.size());
+			
+		}
+
+		void Subdivied(int detail)
+		{
+			for (auto m : meshes)m.Subdivided(detail);
 		}
 
 	private:

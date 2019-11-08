@@ -6,7 +6,7 @@ namespace ALightCreator {
 	class Camera :public Component
 	{
 	public:
-		float FOV = 100.0f;
+		float FOV = 60.0f;
 		float near = 0.1f, far = 100.0f;
 		int width = 800, height = 600;
 

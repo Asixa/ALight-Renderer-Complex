@@ -2,61 +2,29 @@
 #include "imgui/imgui.h"
 #include <glm/vec3.hpp>
 #include "Object.h"
+
+
 namespace ALightCreator {
+	class Model;
 	class Scene
 	{
 	public:
 		std::vector<Object*>objects;
 		Scene();
+		void LoadScene();
 		ImVec4 bgColor = ImVec4(0.2f, 0.2f, 0.2f, 1);
-		float vertices[180] = {
-		  -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		   0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		   0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		   0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		  -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		  -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		int scene = 1;
+		int LOD = 0;
+		const char* path;
+		glm::vec3 InitScale;
+		glm::vec3 InitRotateAxis;
+		glm::vec3 InitTranslation;
+		float InitRotateDegree = 0;
 
-		  -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		   0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		   0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		   0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		  -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		  -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
 
-		  -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		  -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		  -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		  -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		  -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		  -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-		   0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		   0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		   0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		   0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		   0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		   0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-		  -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		   0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		   0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		   0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		  -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		  -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-		  -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		   0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		   0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		   0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		  -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-		  -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-		};
-		unsigned int* indices = new unsigned[6]
-		{
-			0, 1, 3, // first triangle
-			1, 2, 3  // second triangle
-		};
+		
+		bool changed = false;
+		Model* m;
 		float objectMatrix[16] =
 		{ 1.f, 0.f, 0.f, 0.f,
 		  0.f, 1.f, 0.f, 0.f,

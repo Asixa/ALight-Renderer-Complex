@@ -3,6 +3,8 @@
 #include "glm/vec3.hpp"
 #include <vector>
 
+
+
 namespace ALightCreator {
 	class Transform :public Component
 	{

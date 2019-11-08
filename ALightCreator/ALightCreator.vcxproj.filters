@@ -83,6 +83,21 @@
     <ClCompile Include="BufferRenderer.cpp">
       <Filter>Engine\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClCompile>
+    <ClCompile Include="SubDivVertex.cpp">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClCompile>
+    <ClCompile Include="SubdivisionModifier.cpp">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClCompile>
+    <ClCompile Include="SubDivModel.cpp">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Externs">
@@ -126,6 +141,9 @@
     </Filter>
     <Filter Include="Engine\Core">
       <UniqueIdentifier>{46d64767-19e2-4b12-b744-7a054414a4b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Rendering\Subdivsion">
+      <UniqueIdentifier>{9b542c0b-9749-44f0-9d1e-3375b238dbc0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +282,21 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="BufferRenderer.h">
       <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="SubdivisionModifier.h">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClInclude>
+    <ClInclude Include="SubDivModel.h">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
+    </ClInclude>
+    <ClInclude Include="SubDivVertex.h">
+      <Filter>Engine\Rendering\Subdivsion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

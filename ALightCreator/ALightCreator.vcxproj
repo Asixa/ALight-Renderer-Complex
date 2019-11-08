@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="BufferRenderer.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Gizmo\ImCurveEdit.cpp" />
@@ -44,7 +45,11 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="Inspector.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SubdivisionModifier.cpp" />
+    <ClCompile Include="SubDivModel.cpp" />
+    <ClCompile Include="SubDivVertex.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="Application.cpp" />
   </ItemGroup>
@@ -54,6 +59,7 @@
     <ClInclude Include="CameraMove.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="Edge.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Gizmo\ImCurveEdit.h" />
@@ -89,8 +95,12 @@
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Style.h" />
+    <ClInclude Include="SubdivisionModifier.h" />
+    <ClInclude Include="SubDivModel.h" />
+    <ClInclude Include="SubDivVertex.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="UILayout.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Viewport.h" />

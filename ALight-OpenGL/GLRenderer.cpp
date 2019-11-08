@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+
 #include "GLModel.h"
 #include "../ALightCreator/Engine.h"
 #include "../ALightCreator/Camera.h"
@@ -21,7 +22,8 @@ void GLRenderer::Init()
 
 void GLRenderer::InitShader()
 {
-	Resource::GetInstance().shaders.push_back(new Shader("shaders/1.model_loading.vs", "shaders/1.model_loading.fs"));
+	//Resource::GetInstance().shaders.push_back(new Shader("shaders/1.model_loading.vs", "shaders/1.model_loading.fs"));
+	Resource::GetInstance().shaders.push_back(new Shader("shaders/shader.vs", "shaders/shader.fs"));
 	for (auto& shader : Resource::GetInstance().shaders)
 		GLResource::GetInstance().GLShaders.push_back(new GLShader(shader));
 }
@@ -33,17 +35,26 @@ void GLRenderer::InitTexture()
 
 void GLRenderer::InitData()
 {
-	
-	auto m = new Model("../Resources/Objects/sponzaLarge/sponza.obj");
+	our_model = new GLModel(Engine::GetInstance().scene->m);
+	//our_model = new GLModel(new Model(Engine::GetInstance().scene->path));
 
-	our_model = new GLModel(m);
 	InitFrameBuffer(800, 600);
+}
+
+void GLRenderer::Reload()
+{
+	our_model = new GLModel(Engine::GetInstance().scene->m);
 }
 
 
 void GLRenderer::Update()
 {
-	
+	if(Engine::GetInstance().scene->changed)
+	{
+		Reload();
+		Engine::GetInstance().scene->changed = false;
+		
+	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, framebufferPointer);
 	glEnable(GL_DEPTH_TEST);
@@ -54,14 +65,27 @@ void GLRenderer::Update()
 
 	// DrawScene
 	GLResource::GetInstance().GLShaders[0]->use();
+
+
+	GLResource::GetInstance().GLShaders[0]->setVec3("objectColor", 0.5f, 0.5f, 0.5f);
+	GLResource::GetInstance().GLShaders[0]->setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+	glm::vec3 lightPos(1.2f, -1.0f, 2.5f);
+	GLResource::GetInstance().GLShaders[0]->setVec3("lightPos",lightPos );
+
+	
 	GLResource::GetInstance().GLShaders[0]->setMat4("projection", Camera::main->projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
 	GLResource::GetInstance().GLShaders[0]->setMat4("view", Camera::main->view);
 
 
 	glm::mat4 model = glm::make_mat4(Engine::GetInstance().scene->objectMatrix);
-	model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-	model = glm::scale(model, glm::vec3(0.002f, 0.002f, 0.002f));
-	
+
+
+
+	 auto scene = Engine::GetInstance().scene;
+	 model = model = glm::translate(model, scene->InitTranslation);
+	 model = model = glm::scale(model, scene->InitScale);
+	 model = model = glm::rotate(model, scene->InitRotateDegree, scene->InitRotateAxis);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	GLResource::GetInstance().GLShaders[0]->setMat4("model", model);
 	our_model->Draw(*GLResource::GetInstance().GLShaders[0]);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -71,6 +95,11 @@ void GLRenderer::Update()
 void GLRenderer::Terminate()
 {
 
+}
+void Split()
+{
+	auto mesh = our_model->meshes[0];
+	
 }
 
 unsigned GLRenderer::FrameBuffer()

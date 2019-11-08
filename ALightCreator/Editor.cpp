@@ -6,7 +6,7 @@ ImGuizmo::OPERATION Editor::mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
 ImGuizmo::MODE  Editor::mCurrentGizmoMode(ImGuizmo::LOCAL);
 void ALightCreator::Editor::EditTransform(const float* cameraView, float* cameraProjection, float* matrix, ImVec2 size)
 {
-
+	
 	if (ImGui::IsKeyPressed(90))mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 	if (ImGui::IsKeyPressed(69))mCurrentGizmoOperation = ImGuizmo::ROTATE;
 	if (ImGui::IsKeyPressed(82)) mCurrentGizmoOperation = ImGuizmo::SCALE;
